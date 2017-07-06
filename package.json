@@ -20,7 +20,7 @@
     "gatsby-remark-copy-linked-files": "next",
     "gatsby-remark-prismjs": "next",
     "gatsby-remark-responsive-iframe": "next",
-    "gatsby-remark-responsive-image": "next",
+    "gatsby-remark-images": "next",
     "gatsby-remark-smartypants": "next",
     "lodash": "^4.15.0",
     "moment": "^2.14.1",
@@ -30,6 +30,8 @@
     "safe-access": "^0.1.0",
     "typeface-merriweather": "^0.0.25",
     "typeface-montserrat": "^0.0.24",
+    "typeface-space-mono": "^0.0.22",
+    "typeface-spectral": "^0.0.29",
     "typography": "^0.15.8",
     "typography-theme-wordpress-2016": "^0.15.1",
     "underscore.string": "^3.2.3"

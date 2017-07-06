@@ -16,8 +16,8 @@ class Bio extends React.Component {
         }}
       >
         <img
-          src={profilePic}
-          alt={`Kyle Mathews`}
+          src={'https://static.oschina.net/uploads/user/53/106378_100.jpg'}
+          alt={`Magicly`}
           style={{
             float: "left",
             marginRight: rhythm(1 / 4),
@@ -28,12 +28,12 @@ class Bio extends React.Component {
         />
         Written by
         {" "}
-        <strong>Kyle Mathews</strong>
+        <strong>Magicly</strong>
         {" "}
-        who lives and works in San Francisco building useful things.
+        who lives and works in ChengDu building useful things.
         {" "}
-        <a href="https://twitter.com/kylemathews">
-          You should follow him on Twitter
+        <a href="http://weibo.com/magicly" target="_blank">
+          You should follow him on Weibo.
         </a>
       </p>
     )

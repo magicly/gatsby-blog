@@ -4,6 +4,11 @@ import { Container } from "react-responsive-grid"
 
 import { rhythm, scale } from "../utils/typography"
 
+import "typeface-space-mono"
+import "typeface-spectral"
+
+require(`prismjs/themes/prism-solarizedlight.css`)
+
 class Template extends React.Component {
   render() {
     const { location, children } = this.props
@@ -25,7 +30,7 @@ class Template extends React.Component {
             }}
             to={"/"}
           >
-            Gatsby Starter Blog
+            Magicly's Blog
           </Link>
         </h1>
       )
@@ -46,7 +51,7 @@ class Template extends React.Component {
             }}
             to={"/"}
           >
-            Gatsby Starter Blog
+            Magicly's Blog
           </Link>
         </h3>
       )

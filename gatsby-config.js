@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter Blog",
-    author: "Kyle Mathews",
+    title: "Magicly's Blog",
+    author: "Magicly",
   },
   plugins: [
     {
@@ -16,7 +16,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-responsive-image`,
+            resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
             },
@@ -27,7 +27,7 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          "gatsby-remark-prismjs",
+          `gatsby-remark-prismjs`,
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
         ],
@@ -43,4 +43,5 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
   ],
+  pathPrefix: 'http://localhost:5000'
 }

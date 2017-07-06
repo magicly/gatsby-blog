@@ -9,7 +9,6 @@ import { rhythm } from "../utils/typography"
 
 class BlogIndex extends React.Component {
   render() {
-    // console.log("props", this.props)
     const pageLinks = []
     const siteTitle = get(this, "props.data.site.siteMetadata.title")
     const posts = get(this, "props.data.allMarkdownRemark.edges")
@@ -56,7 +55,7 @@ query IndexQuery {
       title
     }
   }
-  allMarkdownRemark {
+  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
         fields {

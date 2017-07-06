@@ -7,11 +7,11 @@ const fs = require(`fs-extra`)
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
-  return new Promise((resolve, reject) => {
+  // return new Promise((resolve, reject) => {
     const pages = []
     const blogPost = path.resolve("./src/templates/blog-post.js")
-    resolve(
-      graphql(
+    // resolve(
+      return graphql(
         `
       {
         allMarkdownRemark(limit: 1000) {
@@ -42,8 +42,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           })
         })
       })
-    )
-  })
+    // )
+  // })
 }
 
 // Add custom slug for blog posts to both File and MarkdownRemark nodes.
@@ -53,11 +53,15 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   switch (node.internal.type) {
     case 'File':
       const parsedFilePath = path.parse(node.relativePath)
-      const slug = `/${parsedFilePath.dir}/`
+      let slug = `/${parsedFilePath.dir}/`
+      if (slug === '//') {
+        slug = `/${parsedFilePath.name}/`
+      }
+      // console.log('slug:', slug, parsedFilePath, '====affffffff====')
       createNodeField({
         node,
-        fieldName: 'slug',
-        fieldValue: slug
+        name: 'slug',
+        value: slug
       })
       return
 
@@ -65,9 +69,19 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       const fileNode = getNode(node.parent)
       createNodeField({
         node,
-        fieldName: 'slug',
-        fieldValue: fileNode.fields.slug,
+        name: 'slug',
+        value: fileNode.fields.slug,
       })
       return
   }
 }
+
+// exports.modifyWebpackConfig = ({config, stage}) => {
+  // config.merge({
+  //   output: {
+  //     publicPath: 'http://localhost:50000000000/',
+  //   }
+  // })
+
+  // return config;
+// }
