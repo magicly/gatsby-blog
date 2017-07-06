@@ -1,8 +1,9 @@
 ---
 title: linear-regression
+draft: false
 tags: [linear regression, ml]
 category: ML
-date: "2017-03-10 18:00:15"
+date: "2017-03-10T18:00:15Z"
 ---
 
 # 假设函数空间，Hypothesis

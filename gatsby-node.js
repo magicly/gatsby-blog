@@ -1,49 +1,63 @@
 const _ = require("lodash")
-const Promise = require("bluebird")
+// const Promise = require("bluebird")
 const path = require("path")
-const select = require(`unist-util-select`)
-const fs = require(`fs-extra`)
+// const slash = require(`slash`)
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
-  // return new Promise((resolve, reject) => {
-    const pages = []
-    const blogPost = path.resolve("./src/templates/blog-post.js")
-    // resolve(
-      return graphql(
-        `
+  const pages = []
+  const blogPost = path.resolve("./src/templates/blog-post.js")
+  const tagPage = path.resolve("./src/templates/tag.js")
+  return graphql(
+    `
       {
-        allMarkdownRemark(limit: 1000) {
+        allMarkdownRemark(limit: 1000, filter: { frontmatter: { draft: { ne: true }}}) {
           edges {
             node {
               fields {
                 slug
+              }
+              frontmatter {
+                tags
               }
             }
           }
         }
       }
     `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
-        }
+  ).then(result => {
+    if (result.errors) {
+      console.log(result.errors)
+      reject(result.errors)
+    }
 
-        // Create blog posts pages.
-        _.each(result.data.allMarkdownRemark.edges, edge => {
-          createPage({
-            path: edge.node.fields.slug, // required
-            component: blogPost,
-            context: {
-              slug: edge.node.fields.slug,
-            },
-          })
-        })
+    // Create blog posts pages.
+    result.data.allMarkdownRemark.edges.forEach(edge => {
+      createPage({
+        path: edge.node.fields.slug, // required
+        component: blogPost,
+        context: {
+          slug: edge.node.fields.slug,
+        },
       })
-    // )
-  // })
+    });
+
+    // create tag pages
+    const tags = result.data.allMarkdownRemark.edges.reduce((tags, edge) => {
+      return tags.concat(edge.node.frontmatter.tags);
+    }, []);
+    let uniqueTags = _.uniq(tags);
+    uniqueTags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag)}/`,
+        component: tagPage,
+        context: {
+          tag
+        }
+      })
+    })
+  })
 }
 
 // Add custom slug for blog posts to both File and MarkdownRemark nodes.
@@ -57,7 +71,6 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       if (slug === '//') {
         slug = `/${parsedFilePath.name}/`
       }
-      // console.log('slug:', slug, parsedFilePath, '====affffffff====')
       createNodeField({
         node,
         name: 'slug',
@@ -72,6 +85,16 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
         name: 'slug',
         value: fileNode.fields.slug,
       })
+      if (node.frontmatter.tags) {
+        const tagSlugs = node.frontmatter.tags.map(tag => {
+          return `/tags/${_.kebabCase(tag)}/`;
+        });
+        createNodeField({
+          node,
+          name: 'tagSlugs',
+          value: tagSlugs
+        })
+      }
       return
   }
 }

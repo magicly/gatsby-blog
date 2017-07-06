@@ -1,8 +1,9 @@
 ---
 title: 用LSTM生成武侠人名
+draft: false
 tags: [rnn, neural network, dl, ml]
 category: ML
-date: "2017-04-07 15:42:58"
+date: "2017-04-07T15:42:58Z"
 ---
 
 之前翻译了[一篇介绍RNN的文章](http://magicly.me/2017/03/09/iamtrask-anyone-can-code-lstm/)，一直没看到[作者](https://twitter.com/iamtrask)写新的介绍LSTM的blog，于是我又找了其他资料学习。本文先介绍一下LSTM，然后用LSTM在金庸、古龙的人名上做了训练，可以生成新的武侠名字，如果有兴趣的，还可以多搜集点人名，用于给小孩儿取名呢，哈哈，justforfun，大家玩得开心...

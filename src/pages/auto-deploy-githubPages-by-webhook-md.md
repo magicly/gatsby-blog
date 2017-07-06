@@ -1,5 +1,6 @@
 ---
 title: 利用webhook实现github pages的自动部署
+draft: false
 tags: [github, webhook, ssh]
 category: default
 date: "2015-09-16T18:12:39Z"

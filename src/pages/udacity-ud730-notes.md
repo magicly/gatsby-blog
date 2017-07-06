@@ -1,8 +1,9 @@
 ---
 title: udacity课程ud730深度学习学习笔记
+draft: false
 tags: [ml, udacity, tensorflow, AI, cnn, rnn, lstm, word2vec]
 category: ML
-date: "2017-03-31 09:48:11"
+date: "2017-03-31T09:48:11Z"
 ---
 
 最近在看Udacity的[ud730课程](https://classroom.udacity.com/courses/ud730/)，号称是tensorflow官方宣传片哈哈，因为用到的代码直接在[tensorflow的代码里面](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/udacity)。

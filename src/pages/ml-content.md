@@ -1,6 +1,7 @@
 ---
 title: 机器学习计划
-date: "2017-02-12 22:04:10"
+draft: false
+date: "2017-02-12T22:04:10Z"
 tags: [AI, ML, machine learning, deep learning, 深度学习]
 category: ML
 ---

@@ -1,6 +1,7 @@
 ---
 title: 一个Java对象到底有多大
-date: "2015-06-13 21:34:10"
+draft: false
+date: "2015-06-13T21:34:10Z"
 tags: [Java, JVM, Java反射]
 category: Java
 ---

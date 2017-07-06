@@ -1,5 +1,6 @@
 ---
 title: AWS深度学习配置
+draft: false
 tags: [rnn, neural network, dl, ml]
 category: ML
 date: "2017-04-15T08:24:24Z"

@@ -1,8 +1,9 @@
 ---
 title: bezier-curve
+draft: false
 tags: [js, css, animation, beizer curve]
 category: FE
-date: "2016-11-29 11:09:52"
+date: "2016-11-29T11:09:52Z"
 
 ---
 

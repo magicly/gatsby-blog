@@ -1,52 +1,56 @@
 import React from "react"
 import Link from "gatsby-link"
-import get from "lodash/get"
 import Helmet from "react-helmet"
-import include from "underscore.string/include"
 
 import Bio from "../components/Bio"
 import { rhythm } from "../utils/typography"
 
-class BlogIndex extends React.Component {
+import styles from "../styles"
+import presets from "../utils/presets"
+
+class Index extends React.Component {
   render() {
-    const pageLinks = []
-    const siteTitle = get(this, "props.data.site.siteMetadata.title")
-    const posts = get(this, "props.data.allMarkdownRemark.edges")
-    posts.forEach(post => {
-      if (post.node.path !== "/404/") {
-        const title = get(post, "node.frontmatter.title") || post.node.path
-        pageLinks.push(
-          <li
-            key={post.node.fields.slug}
-            style={{
-              marginBottom: rhythm(1 / 4),
-            }}
-          >
-            <Link style={{ boxShadow: "none" }} to={post.node.fields.slug}>
-              {post.node.frontmatter.title}
-            </Link>
-          </li>
-        )
-      }
-    })
+    const siteTitle = this.props.data.site.siteMetadata.title;
+    const posts = this.props.data.allMarkdownRemark.edges
 
     return (
       <div>
-        <Helmet title={get(this, "props.data.site.siteMetadata.title")} />
+        <Helmet title={siteTitle} />
         <Bio />
-        <ul>
-          {pageLinks}
-        </ul>
+        <ul
+            css={{
+              marginBottom: rhythm(2),
+              marginTop: rhythm(2),
+              marginLeft: 0,
+              listStyle: `none`,
+            }}
+          >
+            {posts.map(post =>
+              <li key={post.node.fields.slug}>
+                <span
+                  css={{
+                    color: styles.colors.light,
+                    display: `block`,
+                    [presets.Tablet]: {
+                      float: `right`,
+                      marginLeft: `1rem`,
+                    },
+                  }}
+                >
+                  {post.node.frontmatter.date}
+                </span>
+                <Link to={post.node.fields.slug} className="link-underline">
+                  {post.node.frontmatter.title}
+                </Link>
+              </li>
+            )}
+          </ul>
       </div>
     )
   }
 }
 
-BlogIndex.propTypes = {
-  route: React.PropTypes.object,
-}
-
-export default BlogIndex
+export default Index;
 
 export const pageQuery = graphql`
 query IndexQuery {
@@ -55,7 +59,10 @@ query IndexQuery {
       title
     }
   }
-  allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+  allMarkdownRemark(
+    filter: { frontmatter: { draft: { ne: true } } }
+    sort: {fields: [frontmatter___date], order: DESC}
+    ) {
     edges {
       node {
         fields {
@@ -63,6 +70,7 @@ query IndexQuery {
         }
         frontmatter {
           title
+          date(formatString: "YYYY-MM-DD")
         }
       }
     }

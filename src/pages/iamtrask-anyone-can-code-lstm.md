@@ -1,8 +1,9 @@
 ---
 title: 所有人都能学会用Python写出RNN-LSTM代码
+draft: false
 tags: [rnn, neural network, dl, ml]
 category: ML
-date: "2017-03-09 22:12:59"
+date: "2017-03-09T22:12:59Z"
 ---
 
 本文翻译自[@iamtrask](https://twitter.com/iamtrask)的[Anyone Can Learn To Code an LSTM-RNN in Python (Part 1: RNN)](http://iamtrask.github.io/2015/11/15/anyone-can-code-lstm/)。本文作者已通过[twitter联系作者，获得授权](https://twitter.com/magicly007/with_replies)。

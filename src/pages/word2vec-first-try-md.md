@@ -1,8 +1,9 @@
 ---
 title: 用word2vec分析中文维基语料库
+draft: false
 tags: [machine learning, nlp, word2vec]
 category: ML
-date: "2017-03-03 10:37:02"
+date: "2017-03-03T10:37:02Z"
 ---
 
 最近需要做一些自然语言处理的工作， 发现google推出的wrod2vec比较有意思，据说可以推算出king + man - woman = queue，感觉很nb啊， 后续可以拿来做文本分类、情绪分析、关键词提取等。本文记录一下在中文wiki语料库上做的实验。

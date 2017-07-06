@@ -1,8 +1,9 @@
 ---
 title: jupyter转github pages
+draft: true
 tags: [jupyter]
 category: jupyter
-date: "2017-04-20 11:20:43"
+date: "2017-04-20T11:20:43Z"
 ---
 
 最近用jupyter开发比较多， 确实很方便， 为了把jupyter页面部署到github pages方便博客读者阅读，调研了一下jupyter转静态html页面的工具。

@@ -1,8 +1,9 @@
 ---
 title: aws上配置docker
+draft: false
 tags: [aws, docker, ml]
 category: ML
-date: "2017-04-19 17:45:42"
+date: "2017-04-19T17:45:42Z"
 ---
 
 # 如何查看cuda版本

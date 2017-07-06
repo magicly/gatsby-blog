@@ -1,5 +1,6 @@
 ---
 title: 阿里云HPC深度学习配置从入门到真的放弃
+draft: false
 tags: [rnn, neural network, dl, ml]
 category: ML
 date: "2017-04-19T10:03:02Z"

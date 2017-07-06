@@ -1,5 +1,6 @@
 ---
 title: 我的第一个hexo Blog
+draft: false
 date: "2015-07-26T11:09:45Z"
 tags: [hexo, github, githubPages]
 category: default
