@@ -16,6 +16,9 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `magicly-remark-target-new`,
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 740,
