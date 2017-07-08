@@ -49,7 +49,7 @@ class BlogPostTemplate extends React.Component {
       >
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
         {
-          post.frontmatter.math ? <Helmet script={[{src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript`}]} /> : 'math is not true.....'
+          post.frontmatter.math ? <Helmet script={[{src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript`}]} /> : ''
         }
         <header>
           <h1
