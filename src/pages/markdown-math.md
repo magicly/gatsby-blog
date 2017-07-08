@@ -4,6 +4,7 @@ draft: false
 tags: [math]
 category: ML
 date: "2017-03-02T11:16:16Z"
+math: true
 ---
 
 最近准备写一下机器学习的一些学习笔记， 由于涉及到大量数学公式， 发现不把如何在markdown里写数学公式这个问题解决了会严重影响工作效率。大概而言， 主要有两种方式：
@@ -20,7 +21,7 @@ date: "2017-03-02T11:16:16Z"
 
 # MathJax插件
 著名的Stackoverflow网站上的漂亮公式，就是使用了MathJax插件的效果。添加MathJax插件也非常简单，只需要在markdown文件中，添加MathJax CDN，如下：
-```
+```html
 <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -133,7 +134,7 @@ https://cdn.mathjax.org/mathjax/contrib/a11y/accessibility-menu.js?V=2.7.0
 Your config will be merged into default config:
 ```
 似乎也没有。生成的代码为
-```
+```html
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

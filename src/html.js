@@ -41,6 +41,7 @@ module.exports = React.createClass({
           {head.title.toComponent()}
           {head.meta.toComponent()}
           {head.link.toComponent()}
+          {head.script.toComponent()}
         </head>
         <body>
           <div

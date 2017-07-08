@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "remark-html": "^6.0.1",
+    "remark-html-katex": "^1.0.1",
+    "remark-math": "^1.0.0"
+  }
+}
