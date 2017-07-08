@@ -24,6 +24,7 @@
     "gatsby-source-filesystem": "next",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "next",
+    "gitment": "^0.0.3",
     "lodash": "^4.15.0",
     "moment": "^2.18.1",
     "react-helmet": "^4.0.0",

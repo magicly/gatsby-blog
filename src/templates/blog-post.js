@@ -3,11 +3,28 @@ import Helmet from "react-helmet"
 import Link from "gatsby-link"
 import Bio from "../components/Bio"
 
+import 'gitment/style/default.css'
+import Gitment from 'gitment'
+
 import styles from "../styles"
 import { rhythm, scale } from "../utils/typography"
 import presets from "../utils/presets"
 
 class BlogPostTemplate extends React.Component {
+  componentDidMount() {
+    const gitment = new Gitment({
+      // id: 'Your page ID', // optional
+      owner: 'magicly',
+      repo: 'magicly.github.io',
+      oauth: {
+        client_id: '4e646a8f7e6ecc752ce9',
+        client_secret: 'efe58343f04307c92a491a6bbffbee83ee12b89d',
+      },
+      // ...
+      // For more available options, check out the documentation below
+    });
+    gitment.render('comments')
+  }
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title;
@@ -78,6 +95,7 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(2),
           }}
         />
+        <div id="comments" />
         <Bio />
       </div>
     )
