@@ -19,8 +19,9 @@ class Bio extends React.Component {
           src={'https://static.oschina.net/uploads/user/53/106378_100.jpg'}
           alt={`Magicly`}
           style={{
+            borderRadius: `100%`,
             float: "left",
-            marginRight: rhythm(1 / 4),
+            marginRight: rhythm(3 / 4),
             marginBottom: 0,
             width: rhythm(2),
             height: rhythm(2),
