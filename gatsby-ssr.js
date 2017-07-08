@@ -1,5 +1,5 @@
 exports.onRenderBody = function({setPostBodyComponents}, pluginOptions) {
-  console.log('onServerRender ....')
+  // console.log('onServerRender ....')
   return setPostBodyComponents([
     <script
     key='body1'

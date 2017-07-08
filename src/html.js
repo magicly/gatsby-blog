@@ -4,6 +4,8 @@ import Helmet from "react-helmet"
 
 import typography from "./utils/typography"
 
+import favicon from './favicon.ico'
+
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
   try {
@@ -37,6 +39,7 @@ module.exports = React.createClass({
           />
           {this.props.headComponents}
           <TypographyStyle typography={typography} />
+          <link rel="shortcut icon" href={favicon} />
           {css}
           {head.title.toComponent()}
           {head.meta.toComponent()}
