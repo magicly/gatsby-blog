@@ -57,7 +57,8 @@ class BlogPostTemplate extends React.Component {
 
     // todo，应该去判断hostname是否是当前域名，如果是的话不用打开新页面，否则会导致重新加载。 由于写在这里只是一个临时方案，更好的做法应该直接写在markdown的解析插件里。
     // 已经在magicly-remark-target-new中实现，当然，这里修改html会覆盖！
-    // post.html = post.html.replace(/<a href="/g, '<a name target="_blank" href="')
+    // 由于remarkjs解析markdown后，[x][x]这种定义的链接在AST不是link而是definition，所以不好处理，放在这里比较好。
+    post.html = post.html.replace(/<a href="/g, '<a target="_blank" href="')
     return (
       <div
         css={{
