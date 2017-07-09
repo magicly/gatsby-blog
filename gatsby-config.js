@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Magicly's Blog",
     author: "Magicly",
+    // codingnet: true,
   },
   plugins: [
     {
