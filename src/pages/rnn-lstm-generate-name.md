@@ -6,15 +6,15 @@ category: ML
 date: "2017-04-07T15:42:58Z"
 ---
 
-之前翻译了[一篇介绍RNN的文章](http://magicly.me/2017/03/09/iamtrask-anyone-can-code-lstm/)，一直没看到[作者](https://twitter.com/iamtrask)写新的介绍LSTM的blog，于是我又找了其他资料学习。本文先介绍一下LSTM，然后用LSTM在金庸、古龙的人名上做了训练，可以生成新的武侠名字，如果有兴趣的，还可以多搜集点人名，用于给小孩儿取名呢，哈哈，justforfun，大家玩得开心...
+之前翻译了[一篇介绍RNN的文章](//magicly.me/2017/03/09/iamtrask-anyone-can-code-lstm/)，一直没看到[作者](https://twitter.com/iamtrask)写新的介绍LSTM的blog，于是我又找了其他资料学习。本文先介绍一下LSTM，然后用LSTM在金庸、古龙的人名上做了训练，可以生成新的武侠名字，如果有兴趣的，还可以多搜集点人名，用于给小孩儿取名呢，哈哈，justforfun，大家玩得开心...
 
 <!-- more -->
 
 # RNN回顾
 RNN的出现是为了解决状态记忆的问题，解决方法很简单，每一个时间点t的隐藏状态h(t)不再简单地依赖于数据，还依赖于前一个时间节点t-1的隐藏状态h(t-1)。可以看出这是一种递归定义（所以循环神经网络又叫递归神经网络Recursive Neural Network），h(t-1)又依赖于h(t-2)，h(t-2)依赖于h(t-3)...所以h(t)依赖于之前每一个时间点的输入，也就是说h(t)记住了之前所有的输入。
-![rnn](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-rolled.png)
+![rnn](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-rolled.png)
 上图如果按时间展开，就可以看出RNN其实也就是普通神经网络在时间上的堆叠。
-![rnn-unrolled](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
+![rnn-unrolled](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
 
 # RNN问题：Long-Term Dependencies
 一切似乎很完美，但是如果h(t)依赖于h(t - 1000)，依赖路径特别长，会导致计算梯度的时候出现梯度消失的问题，训练时间很长根本没法实际使用。下面是一个依赖路径很长的例子：
@@ -25,36 +25,36 @@ RNN的出现是为了解决状态记忆的问题，解决方法很简单，每�
 Long Short Term Memory神经网络，也就是LSTM，由[ Hochreiter & Schmidhuber于1997年发表](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf)。它的出现就是为了解决Long-Term Dependencies的问题，很来出现了很多改进版本，目前应用在相当多的领域（包括机器翻译、对话机器人、语音识别、Image Caption等）。
 
 标准的RNN里，重复的模块里只是一个很简单的结构，如下图：
-![rnn structure](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
+![rnn structure](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
 
 LSTM也是类似的链表结构，不过它的内部构造要复杂得多：
-![lstm structure](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
+![lstm structure](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 上图中的图标含义如下：
-![lstm components](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM2-notation.png)
+![lstm components](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM2-notation.png)
 
 LSTM的核心思想是cell state（类似于hidden state，有LSTM变种把cell state和hidden state合并了， 比如GRU）和三种门：输入门、忘记门、输出门。
 
 cell state每次作为输入传递到下一个时间点，经过一些线性变化后继续传往再下一个时间点（我还没看过[原始论文](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf)，不知道为啥有了hidden state后还要cell state，好在确实有改良版将两者合并了，所以暂时不去深究了）。
-![cell state](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-C-line.png)
+![cell state](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-C-line.png)
 
 门的概念来自于电路设计（我没学过，就不敢卖弄了）。LSTM里，门控制通过门之后信息能留下多少。如下图，sigmoid层输出[0, 1]的值，决定多少数据可以穿过门， 0表示谁都过不了，1表示全部通过。
-![gate](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-gate.png)
+![gate](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-gate.png)
 
 下面我们来看看每个“门”到底在干什么。
 
 首先我们要决定之前的cell state需要保留多少。 它根据h(t-1)和x(t)计算出一个[0, 1]的数，决定cell state保留多少，0表示全部丢弃，1表示全部保留。为什么要丢弃呢，不是保留得越多越好么？假设LSTM在生成文章，里面有小明和小红，小明在看电视，小红在厨房做饭。如果当前的主语是小明， ok，那LSTM应该输出看电视相关的，比如找遥控器啊， 换台啊，如果主语已经切换到小红了， 那么接下来最好暂时把电视机忘掉，而输出洗菜、酱油、电饭煲等。
-![forget gate](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-f.png)
+![forget gate](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-f.png)
 
 第二步就是决定输入多大程度上影响cell state。这个地方由两部分构成， 一个用sigmoid函数计算出有多少数据留下，一个用tanh函数计算出一个候选C(t)。 这个地方就好比是主语从小明切换到小红了， 电视机就应该切换到厨房。
-![input gate](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-i.png)
+![input gate](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-i.png)
 
 然后我们把留下来的（t-1时刻的）cell state和新增加的合并起来，就得到了t时刻的cell state。
-![combine to cell state](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-C.png)
+![combine to cell state](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-C.png)
 
 最后我们把cell state经过tanh压缩到[-1, 1]，然后输送给输出门（[0, 1]决定输出多少东西）。
-![output](http://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-o.png)
+![output](//colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-o.png)
 
-现在也出了很多LSTM的变种， 有兴趣的可以看[这里](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)。另外，LSTM只是为了解决RNN的long-term dependencies，也有人从另外的角度来解决的，比如[Clockwork RNNs by Koutnik, et al. (2014).](http://arxiv.org/pdf/1402.3511v1.pdf)
+现在也出了很多LSTM的变种， 有兴趣的可以看[这里](//colah.github.io/posts/2015-08-Understanding-LSTMs/)。另外，LSTM只是为了解决RNN的long-term dependencies，也有人从另外的角度来解决的，比如[Clockwork RNNs by Koutnik, et al. (2014).](http://arxiv.org/pdf/1402.3511v1.pdf)
 
 # show me the code!
 我用的[Andrej Karpathy大神](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)的代码， 做了些小改动。这个代码的好处是不依赖于任何深度学习框架，只需要有numpy就可以马上run起来！
