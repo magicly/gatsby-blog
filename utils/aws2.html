@@ -1,0 +1,23 @@
+<h1>如何查看cuda版本</h1>
+<p><a href="http://www.cnblogs.com/shrimp-can/p/5253672.html">http://www.cnblogs.com/shrimp-can/p/5253672.html</a></p>
+<p>默认目录为：local，进入local：cd /usr/local</p>
+<p>输入命令：ls，查看该目录下的文件，可以看到安装的cuda在此处</p>
+<p>进入cuda文件：cd cuda-7.5（我的是7.5），此处为安装的东西</p>
+<!-- more -->
+<h1>安装docker</h1>
+<p><a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p>
+<h1>安装nvidia-docker</h1>
+<p><a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+<h1>docker端口映射</h1>
+<p><a href="https://opskumu.gitbooks.io/docker/content/chapter5.html">https://opskumu.gitbooks.io/docker/content/chapter5.html</a></p>
+<h1>遇到的问题</h1>
+<h2>dpkg lock</h2>
+<blockquote>
+<p>dpkg: error: dpkg status database is locked by another process</p>
+</blockquote>
+<p><a href="https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process">https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process</a></p>
+<pre><code>sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+</code></pre>
+
+false

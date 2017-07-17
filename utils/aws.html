@@ -1,0 +1,66 @@
+<h1>如何查看cuda版本</h1>
+<p><a href="http://www.cnblogs.com/shrimp-can/p/5253672.html">http://www.cnblogs.com/shrimp-can/p/5253672.html</a></p>
+<p>默认目录为：local，进入local：cd /usr/local</p>
+<p>输入命令：ls，查看该目录下的文件，可以看到安装的cuda在此处</p>
+<p>进入cuda文件：cd cuda-7.5（我的是7.5），此处为安装的东西</p>
+<!-- more -->
+<h1>安装docker</h1>
+<p><a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p>
+<h1>安装nvidia-docker</h1>
+<p><a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+<h1>docker端口映射</h1>
+<p><a href="https://opskumu.gitbooks.io/docker/content/chapter5.html">https://opskumu.gitbooks.io/docker/content/chapter5.html</a></p>
+<h1>遇到的问题</h1>
+<h2>dpkg lock</h2>
+<blockquote>
+<p>dpkg: error: dpkg status database is locked by another process</p>
+</blockquote>
+<p><a href="https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process">https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process</a></p>
+<pre><code>sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+</code></pre>
+<p>再来一个复杂点的公式， 这是<a href="https://www.tensorflow.org/tutorials/word2vec">word2vec</a>的损失函数公式（选中公式， 右键可以查看LaTex源码）：</p>
+<pre><code>{% math %}
+J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
+  k \mathop{\mathbb{E}}_{\tilde w \sim P_\text{noise}}
+     \left[ \log Q_\theta(D = 0 |\tilde w, h) \right]
+{% endmath %}
+</code></pre>
+<p>$$
+J<em>\text{NEG} = \log Q</em>\theta(D=1 |w<em>t, h) +
+k \mathop{\mathbb{E}}</em>{\tilde w \sim P<em>\text{noise}}
+\left[ \log Q</em>\theta(D = 0 |\tilde w, h) \right]
+$$</p>
+<h1>如何查看cuda版本</h1>
+<p><a href="http://www.cnblogs.com/shrimp-can/p/5253672.html">http://www.cnblogs.com/shrimp-can/p/5253672.html</a></p>
+<p>默认目录为：local，进入local：cd /usr/local</p>
+<p>输入命令：ls，查看该目录下的文件，可以看到安装的cuda在此处</p>
+<p>进入cuda文件：cd cuda-7.5（我的是7.5），此处为安装的东西</p>
+<!-- more -->
+<h1>安装docker</h1>
+<p><a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p>
+<h1>安装nvidia-docker</h1>
+<p><a href="https://github.com/NVIDIA/nvidia-docker">https://github.com/NVIDIA/nvidia-docker</a></p>
+<h1>docker端口映射</h1>
+<p><a href="https://opskumu.gitbooks.io/docker/content/chapter5.html">https://opskumu.gitbooks.io/docker/content/chapter5.html</a></p>
+<h1>遇到的问题</h1>
+<h2>dpkg lock</h2>
+<blockquote>
+<p>dpkg: error: dpkg status database is locked by another process</p>
+</blockquote>
+<p><a href="https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process">https://askubuntu.com/questions/219545/dpkg-error-dpkg-status-database-is-locked-by-another-process</a></p>
+<pre><code>sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+</code></pre>
+<p>再来一个复杂点的公式， 这是<a href="https://www.tensorflow.org/tutorials/word2vec">word2vec</a>的损失函数公式（选中公式， 右键可以查看LaTex源码）：</p>
+<pre><code>{% math %}
+J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
+  k \mathop{\mathbb{E}}_{\tilde w \sim P_\text{noise}}
+     \left[ \log Q_\theta(D = 0 |\tilde w, h) \right]
+{% endmath %}
+</code></pre>
+<div class="math"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>J</mi><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">E</mi><mi mathvariant="normal">G</mi></mtext></msub><mo>=</mo><mi>log</mi><msub><mi>Q</mi><mi>θ</mi></msub><mo>(</mo><mi>D</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">∣</mi><msub><mi>w</mi><mi>t</mi></msub><mo separator="true">,</mo><mi>h</mi><mo>)</mo><mo>+</mo><mi>k</mi><msub><mo><mrow><mi mathvariant="double-struck">E</mi></mrow></mo><mrow><mover accent="true"><mi>w</mi><mo>~</mo></mover><mo>∼</mo><msub><mi>P</mi><mtext><mi mathvariant="normal">n</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mtext></msub></mrow></msub><mrow><mo fence="true">[</mo><mi>log</mi><msub><mi>Q</mi><mi>θ</mi></msub><mo>(</mo><mi>D</mi><mo>=</mo><mn>0</mn><mi mathvariant="normal">∣</mi><mover accent="true"><mi>w</mi><mo>~</mo></mover><mo separator="true">,</mo><mi>h</mi><mo>)</mo><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">J_\text{NEG} = \log Q_\theta(D=1 |w_t, h) +
+  k \mathop{\mathbb{E}}_{\tilde w \sim P_\text{noise}}
+     \left[ \log Q_\theta(D = 0 |\tilde w, h) \right]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.09618em;">J</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.09618em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord text scriptstyle cramped mtight"><span class="mord mathrm mtight">NEG</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord"><span class="mord mathit">Q</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.02778em;">θ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">∣</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02691em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">t</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mpunct">,</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mop"><span class="mop"><span class="mord displaystyle textstyle uncramped"><span class="mord mathbb">E</span></span></span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord accent mtight"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord mathit mtight" style="margin-right:0.02691em;">w</span></span><span style="top:-0.35em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span><span class="mtight">~</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel mtight">∼</span><span class="mord mtight"><span class="mord mathit mtight" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord text scriptscriptstyle cramped mtight"><span class="mord mathrm mtight">noise</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="minner displaystyle textstyle uncramped"><span class="mopen style-wrap reset-textstyle textstyle uncramped" style="top:0em;">[</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord"><span class="mord mathit">Q</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.02778em;">θ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">∣</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord mathit" style="margin-right:0.02691em;">w</span></span><span style="top:-0.35em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>~</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mclose style-wrap reset-textstyle textstyle uncramped" style="top:0em;">]</span></span></span></span></span></span></div>
+
+false
