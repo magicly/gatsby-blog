@@ -9,7 +9,7 @@ exports.onRenderBody = function({setPostBodyComponents}, pluginOptions) {
         var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?fcf7862e13f1dbfdbb92690dab2e86a0";
+          hm.src = "https://hm.baidu.com/hm.js?d89d5868b0669fbbdc2ddb7c1d8ad1c5";
           var s = document.getElementsByTagName("script")[0]; 
           s.parentNode.insertBefore(hm, s);
         })();
