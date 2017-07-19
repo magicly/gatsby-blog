@@ -14,25 +14,23 @@ $$
 L = \\frac{1}{2} \\rho v^2 S C_L
 $$
 `
-// const markdown = fs.readFileSync('markdown-math.md');
 const ast = remark().parse(markdown);
 
-// Raw String => MDAST => transformed MDAST => HTML
 const processor = remark()
-// const processor = unified()
   .use(math)
-  // .use(katex)
+  .use(katex)
   .use(html)
-  // console.log(processor, processor.attachers, remark().attachers)
-  
 
-
-
-const ast2 = processor.parse(markdown);
-const ast3 = processor.parse(remark().stringify(ast));
+  // processor.run(ast)
+  // .then(node => {
+  //   console.log(ast)
+  //   console.log(node)
+  // })
+  // console.log(math(ast))
 const r = processor().runSync(ast)
-const r2 = remark().runSync(ast)
-console.log('r === ast: ', r === ast, r === r2, ast2 === ast, ast2 === ast3)
+
+// const ast2 = processor.parse(remark().stringify(ast));
+// console.log(`r === ast: , ${r === ast}, r === ast2: ${r === ast2}`)
 
 const str = processor.processSync(markdown).toString();
 console.log(str)
@@ -41,7 +39,7 @@ const str1 = hastToHTML(toHAST(r, { allowDangerousHTML: true }), {
   allowDangerousHTML: true,
 })
 console.log(str1)
-const str2 = hastToHTML(toHAST(ast3, { allowDangerousHTML: true }), {
+const str2 = hastToHTML(toHAST(ast, { allowDangerousHTML: true }), {
   allowDangerousHTML: true,
 })
 console.log(str2)
