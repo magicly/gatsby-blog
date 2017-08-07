@@ -85,6 +85,16 @@ math: true
   }, false);
 ```
 
+完整的Demo请看[这里](/orientation.html)。
+
+[这篇文章](http://www.gad.qq.com/article/detail/25663)里说了，
+> 直到如今有些人仍在说，如果做H5游戏一定要做竖屏游戏，其实要是深入了解一下，说这些话的，很大一部分是2015年或更早进入H5游戏行业中来的，还有一部分是受到那些早期做H5游戏影响的人。
+
+可见不是不能做， 而是他们没有跟上最新的技术步伐， 或者他们嫌太麻烦了或者他们做不出来吧。可见找到一个靠谱的外包服务团队是多么不容易啊。 [漫极客科技](https://www.magicfun.ai)是一家致力于为客户提供高效率高质量服务的靠谱的技术公司，公司创始人曾在人人网、网易游戏、腾讯等多家知名互联网公司工作， 掌握web、app、数据分析、人工智能等多种技术，期待“用技术优化生活”， 改善众多客户的生活质量。有需要请联系他们~
+
 # Refers
 * http://www.jianshu.com/p/9c3264f4a405
+* http://tgask.qq.com/?/article/4
+* http://www.gad.qq.com/article/detail/25663
+* https://www.zhihu.com/question/26631812
 * https://segmentfault.com/q/1010000006686885
