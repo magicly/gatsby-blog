@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #content p {
+      margin: auto;
+      margin-top: 20px;
+      text-align: center;
+    }
+    img {
+      width: 100px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="content">
+    <p>谁说html5不能横屏的。。。</p>
+    <p>我就是要横屏。。。</p>
+    <p>要横屏。。。</p>
+    <p>横屏。。。</p>
+    <p>屏。。。</p>
+    <p>图片也是可以的。<img src="http://img001.photo.21cn.com/photos/album/20120904/o/6A7A403C29766CBCB38C616BDFD48486.jpg" /></p>
+  </div>
+</body>
+
+<script>
+  const width = document.documentElement.clientWidth;
+  const height = document.documentElement.clientHeight;
+  if (width < height) {
+    console.log(width + " " + height);
+    const contentDOM = document.getElementById('content');
+    contentDOM.style.width = height + 'px';
+    contentDOM.style.height = width + 'px';
+    contentDOM.style.top = (height - width) / 2 + 'px';
+    contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+    contentDOM.style.transform = 'rotate(90deg)';
+  }
+  const evt = "onorientationchange" in window ? "orientationchange" : "resize";
+  window.addEventListener(evt, function () {
+    const width = document.documentElement.clientWidth;
+    const height = document.documentElement.clientHeight;
+    const contentDOM = document.getElementById('content');
+    // alert('width: ' + width + ' height: ' + height)
+    if (width > height) { // 横屏
+      contentDOM.style.width = width + 'px';
+      contentDOM.style.height = height + 'px';
+      contentDOM.style.top = '0px';
+      contentDOM.style.left = '0px';
+      contentDOM.style.transform = 'none';
+    }
+    else { // 竖屏，这里微信应该由bug，我切换为竖屏的时候，width:375, height: 323, 导致不能旋转角度。 在safari、chrome上是正确的。
+      // alert('change to portrait')
+      contentDOM.style.width = height + 'px';
+      contentDOM.style.height = width + 'px';
+      contentDOM.style.top = (height - width) / 2 + 'px';
+      contentDOM.style.left = 0 - (height - width) / 2 + 'px';
+      contentDOM.style.transform = 'rotate(90deg)';
+    }
+
+  }, false);
+
+</script>
+
+</html>
