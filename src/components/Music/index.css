@@ -1,0 +1,55 @@
+.slider {
+    display: inline-block;
+
+    margin: 5px 10%;
+    width: 45%;
+}
+
+.music-info {
+    overflow: hidden;
+
+    position: absolute;
+    top: 12%;
+    left: 31%;
+
+    width: 75px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 66px;
+    height: 66px;
+
+    background: rgba(0,0,0,.1);
+}
+
+.audio {
+    position: absolute;
+    top: 51%;
+    left: 66px;
+
+    width: 75%;
+}
+
+.input {
+    position: absolute;
+    top: 9%;
+    left: 63%;
+
+    margin: 0 5px;
+    width: 25%;
+}
+
+.icon {
+    position: absolute;
+    top: 16%;
+    left: 93%;
+
+    cursor: pointer;
+}

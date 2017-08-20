@@ -1,8 +1,5 @@
 import React from "react"
-import { TypographyStyle } from "react-typography"
 import Helmet from "react-helmet"
-
-import typography from "./utils/typography"
 
 import favicon from './favicon.ico'
 
@@ -38,8 +35,8 @@ module.exports = React.createClass({
             content="width=device-width, initial-scale=1.0"
           />
           {this.props.headComponents}
-          <TypographyStyle typography={typography} />
           <link rel="shortcut icon" href={favicon} />
+          <link rel="stylesheet" href="https://unpkg.com/antd/dist/antd.css" />
           {css}
           {head.title.toComponent()}
           {head.meta.toComponent()}

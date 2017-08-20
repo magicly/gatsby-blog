@@ -3,10 +3,6 @@ import Link from "gatsby-link"
 import Helmet from "react-helmet"
 
 import Bio from "../components/Bio"
-import { rhythm } from "../utils/typography"
-
-import styles from "../styles"
-import presets from "../utils/presets"
 
 class Index extends React.Component {
   render() {
@@ -20,8 +16,6 @@ class Index extends React.Component {
         <Bio />
         <ul
             css={{
-              marginBottom: rhythm(2),
-              marginTop: rhythm(2),
               marginLeft: 0,
               listStyle: `none`,
             }}
@@ -30,12 +24,7 @@ class Index extends React.Component {
               <li key={post.node.fields.slug}>
                 <span
                   css={{
-                    color: styles.colors.light,
                     display: `block`,
-                    [presets.Tablet]: {
-                      float: `right`,
-                      marginLeft: `1rem`,
-                    },
                   }}
                 >
                   {post.node.frontmatter.date}

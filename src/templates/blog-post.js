@@ -6,10 +6,6 @@ import Bio from "../components/Bio"
 import 'gitment/style/default.css'
 import Gitment from 'gitment'
 
-import styles from "../styles"
-import { rhythm, scale } from "../utils/typography"
-import presets from "../utils/presets"
-
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
     const gitment = new Gitment({
@@ -62,7 +58,6 @@ class BlogPostTemplate extends React.Component {
     return (
       <div
         css={{
-          maxWidth: rhythm(26),
         }}
       >
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
@@ -72,7 +67,6 @@ class BlogPostTemplate extends React.Component {
         <header>
           <h1
             css={{
-              marginBottom: rhythm(1 / 6),
               color: post.frontmatter.shadow,
             }}
           >
@@ -80,9 +74,7 @@ class BlogPostTemplate extends React.Component {
           </h1>
           <p
             css={{
-              ...scale(-1 / 5),
               display: `block`,
-              color: `${styles.colors.light}`,
             }}
           >
             {post.frontmatter.date}
@@ -92,8 +84,6 @@ class BlogPostTemplate extends React.Component {
         <div dangerouslySetInnerHTML={{ __html: post.html }} className="post" />
         <hr
           css={{
-            marginBottom: rhythm(1),
-            marginTop: rhythm(2),
           }}
         />
         <div id="comments" />
