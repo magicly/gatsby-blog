@@ -38,15 +38,13 @@ jupyter notebook的作用和好处以及基本的安装我就不多说了， 自
 
 1. 需要在AMS Instance的安全组里打开8888端口。
 2. 由于会在公网上访问，为了安全， 需要给jupyter notebook设置一个密码，方法如下：
-```
+```bash
 ubuntu@ip-10-0-0-14:~/nbs$ ipython
 In [1]: from IPython.lib import passwd
-
 In [2]: passwd()
 Enter password:
 Verify password:
 Out[2]: 'sha1:XXXXXXXXXXXXXXX'
-
 In [3]: exit
 ```
 将上诉生成的密码copy到~/.jupyter/jupyter_notebook_config.py（如果没有此文件， 先运行jupyter notebook --generate-config）里:
