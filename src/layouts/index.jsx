@@ -4,6 +4,8 @@ import styled, { injectGlobal } from 'styled-components';
 import SideBar from '../components/LeftCol';
 import Footer from '../components/Footer';
 
+require('prismjs/themes/prism-solarizedlight.css')
+
 injectGlobal`
   body {
     margin: 0;
