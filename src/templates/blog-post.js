@@ -35,8 +35,7 @@ const Title = styled.h1`
 `
 const ArticleEntry = styled.div`
   line-height: 1.8em;
-  padding-right: 7.6923%;
-  padding-left: 7.6923%;
+  padding: 0 7.6923%;
   font-size: 16px;
 
   & > ul, ol {
@@ -56,7 +55,9 @@ const ArticleEntry = styled.div`
     margin-top: 10px;
   }
 `
-
+const Comment = styled.div`
+  padding: 7.6923%;
+`
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
     const gitment = new Gitment({
@@ -118,7 +119,7 @@ class BlogPostTemplate extends React.Component {
         </Header>
         <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
-        <div id="comments" />
+        <Comment id="comments" />
       </Article>
     )
   }
