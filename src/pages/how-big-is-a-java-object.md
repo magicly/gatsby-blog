@@ -22,7 +22,7 @@ category: Java
 
 我们来看看直接从Java程序里能获取到的Runtime。
 
-```
+```java
 import java.util.*;
 
 /**
@@ -83,7 +83,7 @@ public class TestMemory {
 # 相关知识
 你可能需要了解jps，jinfo，打包jar，manifest，查看jvm运行参数等。
 
-# refers
+# Refers
 1. [http://www.importnew.com/14948.html](http://www.importnew.com/14948.html)
 2. [http://www.cnblogs.com/magialmoon/p/3757767.html](http://www.cnblogs.com/magialmoon/p/3757767.html)
 3. [http://www.oschina.net/question/1_4486](http://www.oschina.net/question/1_4486)

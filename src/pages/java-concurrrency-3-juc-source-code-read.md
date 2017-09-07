@@ -36,7 +36,7 @@ AQS是一个abstract class，可以通过继承AQS，定义state的含义，以�
 ## 使用
 
 ReentrantLock的语义跟synchronized关键字基本一样，而且我之前看[《深入理解Java虚拟机》][jvm]里面的评测说JDK6之后，两者的效率基本一致了（JDK5之前ReentrantLock要比synchronized快很多）。Javadoc里面说基本用法如下：
-```
+```java
 class X {
   private final ReentrantLock lock = new ReentrantLock();
   // ...
@@ -54,14 +54,14 @@ class X {
 ## 源码
 
 ReentrantLock用state表示是否被锁，0表示没有线程获取到锁，>=1表示某个线程获取了N次锁（因为是重入的，只要保证lock和unlock成对出现就没有问题）。
-```
+```java
     /** Synchronizer providing all implementation mechanics */
     private final Sync sync;
 
     abstract static class Sync extends AbstractQueuedSynchronizer {
 ```
 定义了一个内部类，基本任务都代理给sync完成。而Sync又是一个abstract class，这里主要是因为实现了两种抢占锁的机制，公平锁和非公平锁。
-```
+```java
 	static final class FairSync extends Sync
 	
 	static final class NonfairSync extends Sync
@@ -69,7 +69,7 @@ ReentrantLock用state表示是否被锁，0表示没有线程获取到锁，>=1�
 所谓公平不公平简单来说就是本文开头说的，当资源释放的时候，大家是按照排队顺序先到先得，还是有人插队大家疯抢。
 
 提供了两个构造函数：
-```
+```java
 	public ReentrantLock() {
         sync = new NonfairSync();//默认非公平锁，AQS论文说非公平锁效率高些，理由其实很简单，公平锁通知队列第一个节点，要把它唤醒，而唤醒是需要时间的，在锁释放到第一个节点被唤醒这段时间其实锁是可以用但是没有被用的（available but not used）；而非公平锁，释放了之后立马就可以被别人用，所以提高了效率，但是有可能导致饥饿锁，这个就要具体看业务需求了。
     }
@@ -79,19 +79,19 @@ ReentrantLock用state表示是否被锁，0表示没有线程获取到锁，>=1�
     }
 ```
 加锁的实现
-```
+```java
 	public void lock() {
         sync.lock();
     }
 ```
 简单代理给了sync，在FairSync里为
-```
+```java
 	final void lock() {
 		acquire(1);
 	}
 ```
 acquire的实现在AQS里面：
-```
+```java
     public final void acquire(int arg) {
         if (!tryAcquire(arg) &&
             acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
@@ -99,7 +99,7 @@ acquire的实现在AQS里面：
     }
 ```
 tryAcquire是要在子类里自己实现的，在FairSync如下;
-```
+```java
 		 protected final boolean tryAcquire(int acquires) {
             final Thread current = Thread.currentThread();
             int c = getState();
@@ -121,7 +121,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
         }
 ```
 如果获取失败，addWaiter(Node.EXCLUSIVE)将当前线程加入队尾
-```
+```java
 	private Node addWaiter(Node mode) {
         Node node = new Node(Thread.currentThread(), mode);//用当前线程构造Node，独占模式
         // Try the fast path of enq; backup to full enq on failure
@@ -154,7 +154,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
     }
 ```
 现在我们已经将获取不到锁的线程加入队尾了，现在要将它挂起acquireQueued(addWaiter(Node.EXCLUSIVE), arg))：
-```
+```java
 	final boolean acquireQueued(final Node node, int arg) {
         boolean failed = true;
         try {
@@ -185,7 +185,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
 上面完成了获取锁的过程，简单来说就是尝试获取，失败就加入队尾，挂起，等待被唤醒。
 
 下面来看看释放锁
-```
+```java
 	public void unlock() {
         sync.release(1);//代理给sync，调用AQS的release
     }
@@ -230,7 +230,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
     }
 ```
 看看需要在子类里实现的tryRelease：
-```
+```java
 		protected final boolean tryRelease(int releases) {
             int c = getState() - releases;//释放锁，state减去相应的值
             if (Thread.currentThread() != getExclusiveOwnerThread())
@@ -245,7 +245,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
         }
 ```
 到这里，基本都已经完成，对了，还没有说非公平锁NonfairSync是怎么抢占锁的。
-```
+```java
 		final void lock() {
             if (compareAndSetState(0, 1))//先抢一把（插队），万一成功了就不排队，不公平性就体现在这里！
                 setExclusiveOwnerThread(Thread.currentThread());
@@ -256,7 +256,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
 跟FairSync.lock()对比，可以看出，只是在acquire(1)之前，先抢一把，抢不到才乖乖的去排队。
 
 我们再看看NonfairSync.tryAcquire()怎么实现的
-```
+```java
 		protected final boolean tryAcquire(int acquires) {
             return nonfairTryAcquire(acquires);//调用父类方法nonfairTryAcquire
         }
@@ -287,7 +287,7 @@ tryAcquire是要在子类里自己实现的，在FairSync如下;
 ## 使用
 
 CountDownLatch就好比一道门，它可以用来等所有资源都到齐了，才开门，让这些线程同时通过。比如如下是CountDownLatch一个通用用法：
-```
+```java
 package concurrentStudy;
 
 import java.util.concurrent.CountDownLatch;
@@ -337,24 +337,24 @@ public class IndexPlusPlusTest01 {
 ## 源码
 
 CountDownLatch同样也是定义了一个继承自AQS的内部类Sync：
-```
+```java
 	private static final class Sync extends AbstractQueuedSynchronizer
 ```
 构造函数如下：
-```
+```java
     public CountDownLatch(int count) {
         if (count < 0) throw new IllegalArgumentException("count < 0");
         this.sync = new Sync(count);
     }
 ```
 count表示有多少个任务还在运行，每个Thread完成了任务或者准备好开始之前，就会调用countDown方法将count-1，当count==0时候，await就不再阻塞，所有在上面阻塞的Thread都可以顺利通过。
-```
+```java
     public void await() throws InterruptedException {
         sync.acquireSharedInterruptibly(1);
     }
 ```
 直接调用AQS的acquireSharedInterruptibly方法，从方法名可以看出，支持中断响应
-```
+```java
     public final void acquireSharedInterruptibly(int arg)
             throws InterruptedException {
         if (Thread.interrupted())
@@ -364,13 +364,13 @@ count表示有多少个任务还在运行，每个Thread完成了任务或者准
     }
 ```
 tryAcquireShared在子类中实现：
-```
+```java
         protected int tryAcquireShared(int acquires) {
             return (getState() == 0) ? 1 : -1;//如果state为0，说明所有Thread完成任务，可以不阻塞了
         }
 ```
 如果没有获取到，将Thread加入队尾，挂起。下面这个方法跟独占模式下acquireQueued(addWaiter(Node.EXCLUSIVE), arg))这个方法代码是基本一致的。
-```
+```java
 	private void doAcquireSharedInterruptibly(int arg)
         throws InterruptedException {
         final Node node = addWaiter(Node.SHARED);//共享模式
@@ -426,7 +426,7 @@ tryAcquireShared在子类中实现：
     }
 ```
 前面完成了等待CountDownLatch的count变成0的过程，下面看看countDown
-```
+```java
 	public void countDown() {
         sync.releaseShared(1);//调用AQS的
     }
@@ -487,14 +487,14 @@ tryAcquireShared在子类中实现：
 unparkSuccessor跟之前独占模式里面的是同一个函数，即调用unpark唤醒Thread。
 
 我们知道为了避免获取不到锁长时间等待，一般阻塞的方法都会支持带超时时间的方法，比如CountDownLatch里就有
-```
+```java
 	public boolean await(long timeout, TimeUnit unit)
         throws InterruptedException {
         return sync.tryAcquireSharedNanos(1, unit.toNanos(timeout));
     }
 ```
 调用AQS里面的tryAcquireSharedNanos方法
-```
+```java
     public final boolean tryAcquireSharedNanos(int arg, long nanosTimeout)
             throws InterruptedException {
         if (Thread.interrupted())
@@ -538,7 +538,7 @@ unparkSuccessor跟之前独占模式里面的是同一个函数，即调用unpar
     }
 ```
 可以看到，跟不带超时的doAcquireSharedInterruptibly方法相比，区别主要在于每次for循环期间，检查时间是否过期和调用带超时的park。nanosTimeout > spinForTimeoutThreshold这个判断主要是因为park/unpark本身也需要花时间，为了更准确地完成超时的机制，在超时时间马上就要到了的时候，就进入自旋，不再park了，这应该是Doug Lea测试了park/unpark时间比1000纳秒要长吧。
-```
+```java
 	/**
      * The number of nanoseconds for which it is faster to spin
      * rather than to use timed park. A rough estimate suffices

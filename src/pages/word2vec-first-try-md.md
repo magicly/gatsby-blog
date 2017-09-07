@@ -61,7 +61,7 @@ iconv -c -t utf-8 < wiki-zh-article-zhs.txt > wiki-zh-article-zhs-utf8.txt
 
 ## 分词
 接下来就是做分词，比较好用的工具有[结巴分词](https://github.com/fxsjy/jieba)、[中科院的ICTCLAS](http://ictclas.nlpir.org/)、[清华的THULAC](http://thulac.thunlp.org/)、[复旦的FudanNLP](https://github.com/FudanNLP/fnlp)等。我选用了结巴，代码如下：
-```
+```python
 import codecs
 import jieba
 
@@ -85,7 +85,7 @@ with open(outfile, 'w', encoding='utf-8') as f:
 
 # Gensim跑模型训练
 终于可以跑模型了，这次时间会更长，看你的电脑配置了，强烈建议约个妹纸出去看看电影逛逛街再回来等。据同事说，gensim有一个坑，在windows下不能用多核？！！！于是我在我的8核macpro下跑一个多小时的，他在windows下要跑七八个小时，哈哈哈哈。。。
-```
+```python
 import multiprocessing
 
 from gensim.models import Word2Vec
@@ -110,7 +110,7 @@ size is the dimensionality of the feature vectors.
 ```
 # 看看效果
 看看跟杜甫相关的词呢：
-```
+```python
 from gensim.models import Word2Vec
 
 model = Word2Vec.load('./wiki-zh-model')
@@ -151,7 +151,7 @@ and their Compositionality](https://arxiv.org/pdf/1310.4546.pdf)，以及[有道
 如果想自己动手实现word2vec的话， 可以考虑用当前最热的深度学习框架[TensorFlow](https://www.tensorflow.org/)来实现， 官网上有[详细地介绍](https://www.tensorflow.org/tutorials/word2vec)。
 
 
-# 参考资料
+# Refers
 * http://www.52nlp.cn/%E4%B8%AD%E8%8B%B1%E6%96%87%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E8%AF%AD%E6%96%99%E4%B8%8A%E7%9A%84word2vec%E5%AE%9E%E9%AA%8C
 * https://radimrehurek.com/gensim/models/word2vec.html
 * https://code.google.com/archive/p/word2vec/

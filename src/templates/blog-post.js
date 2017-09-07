@@ -1,10 +1,19 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Link from "gatsby-link"
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
 import 'gitment/style/default.css'
 import Gitment from 'gitment'
+
+injectGlobal`
+  img {
+    margin: 0;
+    vertical-align: middle;
+    max-width: 100%;
+  }
+
+`
 
 const Article = styled.div`
   margin: 30px;
@@ -29,6 +38,23 @@ const ArticleEntry = styled.div`
   padding-right: 7.6923%;
   padding-left: 7.6923%;
   font-size: 16px;
+
+  & > ul, ol {
+    margin: 0;
+    padding: 0;
+  }
+  & > ul li:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    background: #aaa;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    margin-top: 10px;
+  }
 `
 
 class BlogPostTemplate extends React.Component {

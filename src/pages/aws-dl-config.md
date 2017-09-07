@@ -86,7 +86,7 @@ An error occurred (InvalidKeyPair.NotFound) when calling the RunInstances operat
 
 另外国内的阿里云也有针对深度学习的配置，叫[HPC](https://www.aliyun.com/product/hpc?spm=5176.8142029.388261.36.6n7Ioo)，后面也会再写篇关于阿里云HPC的配置。
 
-# refers
+# Refers
 * http://www.jiqizhixin.com/article/2608
 * https://zhuanlan.zhihu.com/p/25066187
 * http://www.cnblogs.com/meelo/p/5994505.html

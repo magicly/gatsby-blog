@@ -90,4 +90,3 @@ https://github.com/gre/bezier-easing， 这个实现可能有点NB，以至于[R
 # 如何将多个点用贝塞尔曲线连起来
 * http://www.zheng-hang.com/?id=43
 * http://www.cnblogs.com/hnfxs/p/3148743.html
-* 

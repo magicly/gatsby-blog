@@ -82,13 +82,13 @@ category: weixin
 通过本文的配置，可以在本地方便的开发调试微信公共号了。但是对于微信提供的[JS-SDK](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)，又存在另外的问题，这个我会[另外写一篇blog来解决](http://my.oschina.net/magicly007/blog/480704)。毕竟，我们程序员应该坚持[Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)嘛。
 
 
-Refs
+# Refers
 1. [http://www.mbnow.tk/2014/12/05/ngrok/](http://www.mbnow.tk/2014/12/05/ngrok/)
 2. [http://my.oschina.net/jfinal/blog/336861](http://my.oschina.net/jfinal/blog/336861)
 3. [http://www.mbnow.tk/2014/12/05/ngrok/](http://www.mbnow.tk/2014/12/05/ngrok/)
 4. [http://liyaodong.com/2015/07/06/%E5%BE%AE%E4%BF%A1%E8%B0%83%E8%AF%95%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/](http://liyaodong.com/2015/07/06/%E5%BE%AE%E4%BF%A1%E8%B0%83%E8%AF%95%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/)
 5. [http://my.oschina.net/abcfy2/blog/177094](http://my.oschina.net/abcfy2/blog/177094)
 6. [http://www.zhihu.com/question/25456655](http://www.zhihu.com/question/25456655)
-7. . [http://my.oschina.net/atanl/blog/391611](http://my.oschina.net/atanl/blog/391611)
+7. [http://my.oschina.net/atanl/blog/391611](http://my.oschina.net/atanl/blog/391611)
 
 > Written with [StackEdit](https://stackedit.io/).

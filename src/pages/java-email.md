@@ -16,7 +16,7 @@ description: this is desc.
 
 <!-- more -->
 
-```
+```java
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
@@ -69,7 +69,7 @@ public class MultiPartEmailTest {
 
 重申一遍，别用这个代码干坏事，后果自负， 与本人无关！
 
-Refs
+# Refers
 1. [http://blog.csdn.net/ghsau/article/details/8602076](http://blog.csdn.net/ghsau/article/details/8602076)
 2. [http://blog.csdn.net/ghsau/article/details/17839983](http://blog.csdn.net/ghsau/article/details/17839983)
 3. [http://haolloyin.blog.51cto.com/1177454/354320](http://haolloyin.blog.51cto.com/1177454/354320)

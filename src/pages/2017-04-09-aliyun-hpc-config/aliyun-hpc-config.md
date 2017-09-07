@@ -51,7 +51,6 @@ Codename:	Core
 3. ifconfig检查是否有vpn_ppp0这个网卡
 ```
 ifconfig
-
 vpn_vpn0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.30.11  netmask 255.255.255.0  broadcast 192.168.30.255
         ether 00:ac:66:6f:b0:52  txqueuelen 500  (Ethernet)
@@ -60,6 +59,7 @@ vpn_vpn0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         TX packets 4  bytes 168 (168.0 B)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
+
 ## HPC配置
 1. 下载VPN包，解压并进入VPN-HPC
 由于HPC目前不能访问外网OSS（真是蛋疼， 其实HPC现在访问外网比如http://www.platform.ai/files/dogscats.zip是可以的，但居然真的不能访问http://public-img-test.oss-cn-hangzhou.aliyuncs.com/VPN.tar.gz！！！），所以用scp将之前在跳转机上下载的VPN包copy到HPC。
@@ -171,10 +171,8 @@ nvidia-docker run -p 80:8888 registry.cn-hangzhou.aliyuncs.com/denverdino/tensor
 1. ECS跳转机部署代理服务器tengine
 ```
 wget http://tengine.taobao.org/download/tengine-2.1.1.tar.gz
-
 tar zxvf tengine-2.1.1.tar.gz
 cd tengine-2.1.1/
-
 ./configure
 make
 sudo make install
@@ -199,6 +197,7 @@ iptables -I INPUT -p TCP --dport 8888 -j ACCEPT
 ```
 AWS里的话是用安全组配置inbound rules，对于不熟悉iptables的用户要友好一些。现在可以在本地浏览器上访问jupyter notebook了。
 ![hpc jupyter notebook](http://oml1i2pi6.bkt.clouddn.com/hpc-jupyter-notebook.png)
+
 # some tricks
 1. 安装tmux
 ```
@@ -209,7 +208,6 @@ yum install tmux
 -------------- For RHEL/CentOS 7 --------------
 wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
 rpm -ihv epel-release-7-9.noarch.rpm 
-
 yum install htop
 ```
 3. 加速下载数据集
@@ -218,7 +216,7 @@ yum install htop
 # 总结
 经过几个小时的折腾， 我还没有配好可以正确使用gpu的HPC实例。后来看到这篇[在阿里云HPC和容器服务上，像梵高一样作画](https://yq.aliyun.com/articles/68206)，应该比较简单的， 只是目前必须用北京的HPC才可以这么方便的使用。而北京目前必须按月付费，9000￥/月，暂时我还用不起啊。所以还是先放弃HPC，用AWS吧。。。
 
-# refers
+# Refers
 * https://yq.aliyun.com/articles/66993?spm=5176.doc48632.2.5.V1yqJr
 * https://yq.aliyun.com/articles/64979?spm=5176.doc48632.2.6.V1yqJr
 * https://help.aliyun.com/document_detail/48632.html?spm=5176.doc52231.6.573.uqYEBN

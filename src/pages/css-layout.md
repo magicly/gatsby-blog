@@ -216,7 +216,7 @@ flex布局目前已经很常用了，浏览器支持得也很好，甚至连[Rea
 * http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 * http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
 
-# refers
+# Refers
 * https://zhuanlan.zhihu.com/p/25565751
 * http://www.cnblogs.com/star91/p/5773436.html
 * http://www.zhangxinxu.com/wordpress/2013/11/margin-auto-absolute-绝对定位-水平垂直居中/

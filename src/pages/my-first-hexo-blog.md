@@ -66,7 +66,7 @@ category: default
 
 实在觉得没必[重复造轮子](https://en.wikipedia.org/wiki/Reinventing_the_wheel)，重写已经有很详细资料的东西。强烈推荐[这篇](http://ibruce.info/2013/11/22/hexo-your-blog/)。 我觉得基本涵盖了方方面面，如果以后有新东西这里面没有的，我再写吧~
 
-Refs
+# Refers
 1. [http://ibruce.info/2013/11/22/hexo-your-blog/](http://ibruce.info/2013/11/22/hexo-your-blog/)
 2. [http://wsgzao.github.io/post/hexo-guide/](http://wsgzao.github.io/post/hexo-guide/)
 3. [http://www.jianshu.com/p/05289a4bc8b2](http://www.jianshu.com/p/05289a4bc8b2)

@@ -141,7 +141,7 @@ Your config will be merged into default config:
 ```
 配置目没有了？！！好在似乎没有影响使用，那就先暂时这样用着吧~~
 
-[Refs]
+# Refers
 * http://jzqt.github.io/2015/06/30/Markdown%E4%B8%AD%E5%86%99%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/
 * https://www.zybuluo.com/codeep/note/163962
 * http://oiltang.com/2014/05/04/markdown-and-mathjax/

@@ -22,11 +22,11 @@ atomic包下的类主要基于现代主流 CPU 都支持的一种指令，Compar
 >在这里，CAS 指的是现代 CPU 广泛支持的一种对内存中的共享数据进行操作的一种特殊指令。这个指令会对内存中的共享数据做原子的读写操作。简单介绍一下这个指令的操作过程：首先，CPU 会将内存中将要被更改的数据与期望的值做比较。然后，当这两个值相等时，CPU 才会将内存中的数值替换为新的值。否则便不做操作。最后，CPU 会将旧的数值返回。这一系列的操作是原子的。它们虽然看似复杂，但却是 Java 5 并发机制优于原有锁机制的根本。简单来说，CAS 的含义是“我认为原有的值应该是什么，如果是，则将原有的值更新为新值，否则不做修改，并告诉我原来的值是多少”。
 
 # AtomicInteger
-```
+```java
 private volatile int value;
 ```
 AtomicInteger里面只包含一个字段，用来记录当前值，定义为volatile是为了满足**可见性**。
-```
+```java
   // setup to use Unsafe.compareAndSwapInt for updates
     private static final Unsafe unsafe = Unsafe.getUnsafe();
     private static final long valueOffset;
@@ -39,12 +39,12 @@ AtomicInteger里面只包含一个字段，用来记录当前值，定义为vola
     }
 ```
 一开始定义了static变量Unsafe，AtomicInteger里面的方法都是对unsafe里面
-```
+```java
 public final native boolean compareAndSwapInt(Object var1, long var2, int var4, int var5);
 ```
 方法的封装。
 我们来看原子性的i++，
-```
+```java
     public final int getAndIncrement() {
         for (;;) {
             int current = get();
@@ -55,7 +55,7 @@ public final native boolean compareAndSwapInt(Object var1, long var2, int var4, 
     }
 ```
 在一个无限循环里面，首先获取当前值，用当前值+1，然后调用
-```
+```java
    public final boolean compareAndSet(int expect, int update) {
 	return unsafe.compareAndSwapInt(this, valueOffset, expect, update);
     }
@@ -69,13 +69,13 @@ AtomicInteger里面的其他方法，基本类似；其他类包括AtomicLong，
 前面可以看到Unsafe类在实现atomic的重要性。为什么有Unsafe这个class呢，基本原因是Java不允许代码直接操作内存，好处是更安全，一般不会出现内存泄露，因为有JVM的GC；坏处是有些底层调用执行不了。我的理解是，Unsafe就是这个java安全围城通向比如c++这个不安全外围的一道门，所以叫Unsafe嘛。Unsafe里面基本都是native，即通过JNI调用c/c++等代码。大部分是直接内存操作，以及后面会讲到的挂起唤醒线程等，包括park和unpark。
 
 前面到
-```
+```java
 public final native boolean compareAndSwapInt(Object var1, long var2, int var4, int var5);
 ```
 这个方法就不是java代码了，如果想看实现的话，需要下载OpenJDK源码，里面是c++代码调用汇编代码，blabla。我不建议大家再往下继续了，原因有几个，一是我们用java等高级语言的目的就是为了避免纠结复杂的底层细节，站在更高层的角度思考问题，而且java里面还有更多的问题等待你去解决，更多的知识可以学习呢！如果你说你已经把java完全掌握了，包括把jdk源码，tomcat、spring，xxxxx源码都看过了，实在没得看了，那我会说，多陪陪家人吧~除非你是JVM开发工程师，哦，那不好意思，大神，当我啥都没说。。。。为了完整性，我贴几个参考链接http://www.blogjava.net/mstar/archive/2013/04/24/398351.html, http://zl198751.iteye.com/blog/1848575.
 
 那么如果获取Unsafe呢？Unsafe有一个static方法可以获取Unsafe实例，如下
-```
+```java
  public static Unsafe getUnsafe() {
         Class var0 = Reflection.getCallerClass(2);
         if(var0.getClassLoader() != null) {
@@ -86,7 +86,7 @@ public final native boolean compareAndSwapInt(Object var1, long var2, int var4, 
     }
 ```
 可是你如果在自己代码里使用，可以编译通过，但是运行时候报错。因为里面限制了调用getUnsafe()这个方法的类必须是启动类加载器Bootstrap Loader。所以如果想在自己代码里面调用Unsafe的话（强烈建议不要这样子做），可以用Java的反射来实现：
-```
+```java
     static class UnsafeSupport {
         private static Unsafe unsafe;
 
@@ -136,8 +136,7 @@ CAS操作容易导致ABA问题,也就是在做a++之间，a可能被多个线程
 
 atomic包下的类比如AtomicInteger实现原子性的方法主要是依靠现代主流 CPU 都支持的CAS指令，它是通过Unsafe类的native方法调用的。一般而言性能比用锁同步要好，但是都已经很好了，一般而言不会遇到性能问题，关键还是看它的语义是否满足使用要求，以及是否可以让代码更清新。
 
-Refers
-
+# Refers
 1. [http://my.oschina.net/lifany/blog/133513](http://my.oschina.net/lifany/blog/133513)
 2. [http://zl198751.iteye.com/blog/1848575](http://zl198751.iteye.com/blog/1848575)
 3. [http://blog.csdn.net/aesop_wubo/article/details/7537960](http://blog.csdn.net/aesop_wubo/article/details/7537960)
