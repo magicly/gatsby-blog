@@ -1,13 +1,10 @@
 import React from "react"
-import { Row, Col, Pagination, message } from 'antd';
 import MediaQuery from 'react-responsive';
-import ArticleCard from '../components/ArticleCard';
+import Articles from '../components/Articles';
 import Sidebar from '../components/Sidebar';
 
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
-
-import Bio from "../components/Bio"
 
 const Index = (props) => {
   const siteTitle = props.data.site.siteMetadata.title;
@@ -16,7 +13,7 @@ const Index = (props) => {
 
   const articles = posts.map(post => {
     return {
-      id: post.node.fields.slug,
+      id: post.node.fields.slug.replace('/', ''),
       time: post.node.frontmatter.date,
       title: post.node.frontmatter.title,
       summary: post.node.excerpt,
@@ -27,50 +24,26 @@ const Index = (props) => {
   const categoryList = articles.map(post => post.category)
   const tagsList = articles.map(post => post.tags)
   const total = posts.length;
-  const main = (
-    <div>
-      <ArticleCard articles={articles} />
-      <Pagination
-        showQuickJumper
-        defaultCurrent={1}
-        defaultPageSize={5}
-        total={total}
-        //onChange={this.handleChange} // todo
-        //className={styles.pagination}
-      />
-    </div>
-  );
+  const main = <Articles articles={articles} />;
   return (
-    <Row>
+    <div>
       <Helmet title={siteTitle} />
-      <Col span={1} />
-      <MediaQuery query="(min-width:800px)">
-        <Col span={17}>{main}</Col>
-        <Col span={5}>
-          <Sidebar categoryList={categoryList} tagsList={tagsList} />
-        </Col>
-      </MediaQuery>
-      <MediaQuery query="(max-width:800px)">
-        <Col span={22}>
-          {main}
-        </Col>
-      </MediaQuery>
-      <Col span={1} />
-    </Row>
+      <div>{main}</div>
+    </div>
   );
 }
 
 export default Index;
 
 export const pageQuery = graphql`
-query IndexQuery3 {
+query IndexQuery {
   site {
     siteMetadata {
       title
-      codingnet
     }
   }
   allMarkdownRemark(
+    limit: 30,
     filter: { frontmatter: { draft: { ne: true } } }
     sort: {fields: [frontmatter___date], order: DESC}
     ) {

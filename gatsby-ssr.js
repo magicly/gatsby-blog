@@ -1,3 +1,5 @@
+import React from 'react';
+
 exports.onRenderBody = function({setPostBodyComponents}, pluginOptions) {
   // console.log('onServerRender ....')
   return setPostBodyComponents([

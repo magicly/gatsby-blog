@@ -35,7 +35,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     // Create blog posts pages.
     result.data.allMarkdownRemark.edges.forEach(edge => {
       createPage({
-        path: edge.node.fields.slug, // required
+        path: 'articles' + edge.node.fields.slug, // required
         component: blogPost,
         context: {
           slug: edge.node.fields.slug,

@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, Calendar } from 'antd';
 import Link from "gatsby-link"
 import MediaQuery from 'react-responsive';
-import Music from '../Music';
 
 import './index.css';
 const styles = {

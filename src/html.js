@@ -36,7 +36,6 @@ module.exports = React.createClass({
           />
           {this.props.headComponents}
           <link rel="shortcut icon" href={favicon} />
-          <link rel="stylesheet" href="https://unpkg.com/antd/dist/antd.css" />
           {css}
           {head.title.toComponent()}
           {head.meta.toComponent()}

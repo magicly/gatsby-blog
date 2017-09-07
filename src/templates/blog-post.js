@@ -1,10 +1,35 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Link from "gatsby-link"
-import Bio from "../components/Bio"
+import styled from 'styled-components';
 
 import 'gitment/style/default.css'
 import Gitment from 'gitment'
+
+const Article = styled.div`
+  margin: 30px;
+  position: relative;
+  border: 1px solid #ddd;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+  transition: all .2s ease-in;
+`
+const Header = styled.header`
+  border-left: 5px solid #4d4d4d;
+  padding: 30px 0 15px 25px;
+  padding-left: 7.6923%;
+`
+const Title = styled.h1`
+  margin-bottom: 10px;
+  display: inline;
+`
+const ArticleEntry = styled.div`
+  line-height: 1.8em;
+  padding-right: 7.6923%;
+  padding-left: 7.6923%;
+  font-size: 16px;
+`
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -40,12 +65,7 @@ class BlogPostTemplate extends React.Component {
         )
       })
       tagsSection = (
-        <span
-          css={{
-            fontStyle: `normal`,
-            textAlign: `left`,
-          }}
-        >
+        <span>
           tagged {tags}
         </span>
       )
@@ -56,39 +76,24 @@ class BlogPostTemplate extends React.Component {
     // 由于remarkjs解析markdown后，[x][x]这种定义的链接在AST不是link而是definition，所以不好处理，放在这里比较好。
     post.html = post.html.replace(/<a href="/g, '<a target="_blank" href="')
     return (
-      <div
-        css={{
-        }}
-      >
+      <Article>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
         {
-          post.frontmatter.math ? <Helmet script={[{src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript`}]} /> : ''
+          post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
         }
-        <header>
-          <h1
-            css={{
-              color: post.frontmatter.shadow,
-            }}
-          >
+        <Header>
+          <Title>
             {post.frontmatter.title}
-          </h1>
-          <p
-            css={{
-              display: `block`,
-            }}
-          >
+          </Title>
+          <p>
             {post.frontmatter.date}
             {post.timeToRead} min read &middot; {tagsSection}
           </p>
-        </header>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} className="post" />
-        <hr
-          css={{
-          }}
-        />
+        </Header>
+        <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
+        <hr />
         <div id="comments" />
-        <Bio />
-      </div>
+      </Article>
     )
   }
 }

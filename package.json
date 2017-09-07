@@ -19,6 +19,7 @@
     "gatsby-plugin-manifest": "^1.0.1",
     "gatsby-plugin-offline": "^1.0.1",
     "gatsby-plugin-preact": "next",
+    "gatsby-plugin-styled-components": "^1.0.5",
     "gatsby-plugin-typescript": "latest",
     "gatsby-remark-autolink-headers": "^1.0.1",
     "gatsby-remark-copy-linked-files": "^1.0.0-beta.6",

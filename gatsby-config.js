@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: "Magicly's Blog",
     author: "Magicly",
-    codingnet: false,
   },
   plugins: [
     {
@@ -36,7 +35,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-glamor`,
+    `gatsby-plugin-styled-components`,
   ],
   pathPrefix: 'http://localhost:5000'
 }
