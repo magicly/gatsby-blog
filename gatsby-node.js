@@ -9,6 +9,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const pages = []
   const blogPost = path.resolve("./src/templates/blog-post.js")
   const tagPage = path.resolve("./src/templates/tag.js")
+  const Page = path.resolve("./src/templates/page.jsx")
   return graphql(
     `
       {
@@ -36,8 +37,24 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       reject(result.errors)
     }
 
-    // Create blog posts pages.
+    // 创建分页
     const edges = result.data.allMarkdownRemark.edges;
+    const PAGE_SIZE = 10;
+    const total = Math.ceil(edges.length / PAGE_SIZE);
+    for (let i = 1; i <= total; i += 1) {
+      createPage({
+        path: i === 1 ? '/' : `page/${i}`,
+        component: Page,
+        context: {
+          current: i,
+          skip: (i - 1) * PAGE_SIZE,
+          total,
+        },
+      })
+    }
+
+
+    // Create blog posts pages.
     for (let i = 0; i < edges.length; i += 1) {
       const currentUrl = edges[i].node.fields.slug;
       const prevUrl = i === 0 ? null : edges[i - 1].node.fields.slug;

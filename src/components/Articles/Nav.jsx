@@ -43,9 +43,9 @@ export default ({ current = 1, total = 1 }) => {
   const numbers = [];
   for (let i = 1; i <= total; i += 1) {
     if (i === current) {
-      numbers.push(<Current>{i}</Current>);
+      numbers.push(<Current key={i}>{i}</Current>);
     } else {
-      numbers.push(<NavNumber to={`/page/${i}`}>{i}</NavNumber>);
+      numbers.push(<NavNumber key={i} to={i === 1 ? '/' : `/page/${i}`}>{i}</NavNumber>);
     }
   }
   return (

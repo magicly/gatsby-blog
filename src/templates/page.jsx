@@ -22,8 +22,9 @@ const Index = (props) => {
   });
   const categoryList = articles.map(post => post.category)
   const tagsList = articles.map(post => post.tags)
-  const total = posts.length;
-  const main = <Articles articles={articles} current={1} total={3} />;
+  const total = props.pathContext.total;
+  const current = props.pathContext.current;
+  const main = <Articles articles={articles} current={current} total={total} />;
   return (
     <div>
       <Helmet title={siteTitle} />
@@ -35,13 +36,14 @@ const Index = (props) => {
 export default Index;
 
 export const pageQuery = graphql`
-query IndexQuery {
+query IndexQuery($skip: Int!) {
   site {
     siteMetadata {
       title
     }
   }
   allMarkdownRemark(
+    skip: $skip,
     limit: 10,
     filter: { frontmatter: { draft: { ne: true } } }
     sort: {fields: [frontmatter___date], order: DESC}
