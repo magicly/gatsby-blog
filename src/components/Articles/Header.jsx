@@ -16,6 +16,7 @@ const Title = styled(Link) `
   font-size: 26px;
   transition: color .3s;
 `
+const TitleWithoutLink = Title.withComponent('span');
 const Date = styled.time`
   color: #999;
   margin-right: 7.6923%;
@@ -29,9 +30,16 @@ const DateIcon = styled.i`
 `
 
 export default ({ article }) => <Header>
-  <Title to={`/articles/${article.id}`}>
-    {article.title}
-  </Title>
+  {
+    article.id ?
+      <Title to={`/articles/${article.id}`}>
+        {article.title}
+      </Title>
+      :
+      <TitleWithoutLink to={`/articles/${article.id}`}>
+        {article.title}
+      </TitleWithoutLink>
+  }
   <Date>
     <DateIcon className="iconfont" />
     {article.time || '2017-01-01'}

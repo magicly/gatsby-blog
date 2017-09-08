@@ -68,7 +68,7 @@ const NextArrow = styled.i`
   }
 `
 const Comment = styled.div`
-  padding: 7.6923%;
+  padding: 0 7.6923%;
 `
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -100,20 +100,22 @@ class BlogPostTemplate extends React.Component {
           {
             post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
           }
-          <ArticleHeader article={{ id: post.id, title: post.frontmatter.title, time: post.frontmatter.date }} />
+
+          <ArticleHeader article={{ title: post.frontmatter.title, time: post.frontmatter.date }} />
           <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
           <CategoryAndTags article={{ category: post.frontmatter.category, tags: post.frontmatter.tags }} />
         </Article>
         <Nav>
           {
-            this.props.pathContext.prev.url && this.props.pathContext.prev.title && 
-          <PrevLink to={'/articles' + this.props.pathContext.prev.url}><PrevArrow className="iconfont" />{this.props.pathContext.prev.title}</PrevLink>
+            this.props.pathContext.prev.url && this.props.pathContext.prev.title &&
+            <PrevLink to={'/articles' + this.props.pathContext.prev.url}><PrevArrow className="iconfont" />{this.props.pathContext.prev.title}</PrevLink>
           }
           {
-            this.props.pathContext.next.url && this.props.pathContext.next.title && 
-          <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}<NextArrow className="iconfont" /></NextLink>
+            this.props.pathContext.next.url && this.props.pathContext.next.title &&
+            <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}<NextArrow className="iconfont" /></NextLink>
           }
         </Nav>
+        <Comment id="comments" />
       </div>
     )
   }
@@ -133,9 +135,6 @@ export const pageQuery = graphql`
       id
       html
       timeToRead
-      fields {
-        tagSlugs
-      }
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
