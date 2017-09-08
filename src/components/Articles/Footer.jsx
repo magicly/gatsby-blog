@@ -59,10 +59,25 @@ const MoreLink = styled(Link) `
   border-radius: 2px;
   transition: background .3s;
 `
+const Icon = styled.i`
+  color: #999;
+  margin-right: 10px;
+  margin-top: 6px;
+`
+const TagIcon = Icon.extend`
+  :before {
+    content: "\\e815";
+  }
+`
+const CategoryIcon = Icon.extend`
+  :before {
+    content: "\\e622";
+  }
+`
 
 const getCategory = article => {
   return article.category &&
-    <span>Category:
+    <span><CategoryIcon className="iconfont" />
       <CategoryLink
         to={`/categories/${article.category}`}
       >
@@ -73,7 +88,7 @@ const getCategory = article => {
 
 const getTags = article => {
   return article.tags && article.tags.length > 0 &&
-    <span>Tags:
+    <span><TagIcon className="iconfont" />
       {article.tags.map((tag, i) => (
         <TagLink to={`/tags/${tag}`} key={tag}>
           {tag}{' '}

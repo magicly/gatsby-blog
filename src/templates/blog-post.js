@@ -54,8 +54,18 @@ const Nav = styled.nav`
 const PrevLink = styled(Link) `
   float: left;
 `
+const PrevArrow = styled.i`
+  :before {
+    content: "\\e652";
+  }
+`
 const NextLink = styled(Link) `
   float: right;
+`
+const NextArrow = styled.i`
+  :before {
+    content: "\\e656";
+  }
 `
 const Comment = styled.div`
   padding: 7.6923%;
@@ -95,8 +105,14 @@ class BlogPostTemplate extends React.Component {
           <CategoryAndTags article={{ category: post.frontmatter.category, tags: post.frontmatter.tags }} />
         </Article>
         <Nav>
-          <PrevLink to={'/articles' + this.props.pathContext.prev.url}>«{this.props.pathContext.prev.title}</PrevLink>
-          <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}»</NextLink>
+          {
+            this.props.pathContext.prev.url && this.props.pathContext.prev.title && 
+          <PrevLink to={'/articles' + this.props.pathContext.prev.url}><PrevArrow className="iconfont" />{this.props.pathContext.prev.title}</PrevLink>
+          }
+          {
+            this.props.pathContext.next.url && this.props.pathContext.next.title && 
+          <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}<NextArrow className="iconfont" /></NextLink>
+          }
         </Nav>
       </div>
     )

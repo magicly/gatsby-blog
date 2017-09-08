@@ -76,18 +76,25 @@ const SocialLink = ColorA.extend`
   line-height: 26px;
 `
 const GithubLink = SocialLink.extend`
-    background: #afb6ca;
-    border: 1px solid #afb6ca;
-    :after {
-      content: "\E735";
-    }
+  background: #afb6ca;
+  border: 1px solid #afb6ca;
+  :after {
+    content: "\\e8ee";
+  }
 `
 const WeiboLink = SocialLink.extend`
-    background: #aaf;
-    border: 1px solid #aaf;
-    :after {
-      content: "\E619";
-    }
+  background: #aaf;
+  border: 1px solid #aaf;
+  :after {
+    content: "\\e613";
+  }
+`
+const TwitterLink = SocialLink.extend`
+  background: #1DA1F2;
+  border: 1px solid #1DA1F2;
+  :after {
+    content: "\\ec9c";
+  }
 `
 const SideBar = ({ className }) => {
   return <div className={className}>
@@ -113,9 +120,9 @@ const SideBar = ({ className }) => {
       <Link to="/about">关于我</Link>
     </Menu2>
     <Social>
-      <GithubLink href="https://github.com/magicly" title="github" target="_blank"></GithubLink>
-      <WeiboLink href="https://weibo.com/magicly" title="weibo" target="_blank"></WeiboLink>
-      <SocialLink href="https://weibo.com/magicly" title="weibo" target="_blank">w</SocialLink>
+      <GithubLink className="iconfont" href="https://github.com/magicly" title="Github" target="_blank"></GithubLink>
+      <WeiboLink className="iconfont" href="https://weibo.com/magicly" title="Weibo" target="_blank"></WeiboLink>
+      <TwitterLink className="iconfont" href="https://twitter.com/magicly007" title="Twitter" target="_blank"></TwitterLink>
     </Social>
   </div>
 }

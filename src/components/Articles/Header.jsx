@@ -21,12 +21,19 @@ const Date = styled.time`
   margin-right: 7.6923%;
   float: right;
 `
+const DateIcon = styled.i`
+  margin: 5px 5px 5px 0;
+  :before {
+    content: "\\e65e";
+  }
+`
 
 export default ({ article }) => <Header>
   <Title to={`/articles/${article.id}`}>
     {article.title}
   </Title>
   <Date>
+    <DateIcon className="iconfont" />
     {article.time || '2017-01-01'}
   </Date>
 </Header>

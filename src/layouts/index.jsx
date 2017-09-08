@@ -7,6 +7,21 @@ import Footer from '../components/Footer';
 require('prismjs/themes/prism-solarizedlight.css')
 
 injectGlobal`
+  @font-face {
+    font-family: 'iconfont';  /* project id 410056 */
+    src: url('/fonts/iconfont.eot');
+    src: url('/fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/iconfont.woff') format('woff'),
+    url('/fonts/iconfont.ttf') format('truetype'),
+    url('/fonts/iconfont.svg#iconfont') format('svg');
+  }
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
   body {
     margin: 0;
     height: 100%;
