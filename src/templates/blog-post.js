@@ -1,6 +1,8 @@
 import React from "react"
 import Helmet from "react-helmet"
 import Link from "gatsby-link"
+import { CategoryAndTags } from '../components/Articles/Footer';
+import ArticleHeader from '../components/Articles/Header';
 import styled, { injectGlobal } from 'styled-components';
 
 import 'gitment/style/default.css'
@@ -21,15 +23,6 @@ const Article = styled.div`
   border-bottom: 1px solid #fff;
   background: #fff;
   transition: all .2s ease-in;
-`
-const Header = styled.header`
-  border-left: 5px solid #4d4d4d;
-  padding: 30px 0 15px 25px;
-  padding-left: 7.6923%;
-`
-const Title = styled.h1`
-  margin-bottom: 10px;
-  display: inline;
 `
 const ArticleEntry = styled.div`
   line-height: 1.8em;
@@ -53,6 +46,17 @@ const ArticleEntry = styled.div`
     margin-top: 10px;
   }
 `
+const Nav = styled.nav`
+  margin: 0 0 20px;
+  padding: 0 32px 10px;
+  min-height: 30px;
+`
+const PrevLink = styled(Link) `
+  float: left;
+`
+const NextLink = styled(Link) `
+  float: right;
+`
 const Comment = styled.div`
   padding: 7.6923%;
 `
@@ -75,50 +79,26 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title;
 
-    let tags, tagsSection;
-    if (post.fields.tagSlugs) {
-      const tagsArray = post.fields.tagSlugs;
-      tags = tagsArray.map((tag, i) => {
-        const divider = i < tagsArray.length - 1 && <span>{`, `}</span>
-        return (
-          <span key={tag}>
-            <Link to={tag}>
-              {post.frontmatter.tags[i]}
-            </Link>
-            {divider}
-          </span>
-        )
-      })
-      tagsSection = (
-        <span>
-          tagged {tags}
-        </span>
-      )
-    }
-
     // todo，应该去判断hostname是否是当前域名，如果是的话不用打开新页面，否则会导致重新加载。 由于写在这里只是一个临时方案，更好的做法应该直接写在markdown的解析插件里。
     // 已经在magicly-remark-target-new中实现，当然，这里修改html会覆盖！
     // 由于remarkjs解析markdown后，[x][x]这种定义的链接在AST不是link而是definition，所以不好处理，放在这里比较好。
     post.html = post.html.replace(/<a href="/g, '<a target="_blank" href="')
     return (
-      <Article>
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        {
-          post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
-        }
-        <Header>
-          <Title>
-            {post.frontmatter.title}
-          </Title>
-          <p>
-            {post.frontmatter.date}
-            {post.timeToRead} min read &middot; {tagsSection}
-          </p>
-        </Header>
-        <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-        <Comment id="comments" />
-      </Article>
+      <div>
+        <Article>
+          <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+          {
+            post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
+          }
+          <ArticleHeader article={{ id: post.id, title: post.frontmatter.title, time: post.frontmatter.date }} />
+          <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
+          <CategoryAndTags article={{ category: post.frontmatter.category, tags: post.frontmatter.tags }} />
+        </Article>
+        <Nav>
+          <PrevLink to={'/articles' + this.props.pathContext.prev.url}>«{this.props.pathContext.prev.title}</PrevLink>
+          <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}»</NextLink>
+        </Nav>
+      </div>
     )
   }
 }
@@ -142,7 +122,8 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD HH:mm:ss")
+        date(formatString: "YYYY-MM-DD")
+        category
         tags
         math
       }

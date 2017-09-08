@@ -40,11 +40,6 @@ const CategoryLink = styled(Link) `
 `
 const TagLink = CategoryLink.extend`
 `
-const LinkHover = styled(Link) `
-  &:hover {
-    color: #ea6753;
-  }
-`
 const Footer = styled.div`
   padding-top: 20px;
   margin: 30px 7.6923% 0;
@@ -65,9 +60,8 @@ const MoreLink = styled(Link) `
   transition: background .3s;
 `
 
-export default ({ article }) => <Footer>
-  {
-    article.category &&
+const getCategory = article => {
+  return article.category &&
     <span>Category:
       <CategoryLink
         to={`/categories/${article.category}`}
@@ -75,10 +69,10 @@ export default ({ article }) => <Footer>
         {article.category}
       </CategoryLink>&nbsp;&nbsp;
       </span>
-  }
-  {
-    article.tags &&
-    article.tags.length > 0 &&
+};
+
+const getTags = article => {
+  return article.tags && article.tags.length > 0 &&
     <span>Tags:
       {article.tags.map((tag, i) => (
         <TagLink to={`/tags/${tag}`} key={tag}>
@@ -86,7 +80,17 @@ export default ({ article }) => <Footer>
         </TagLink>
       ))}
     </span>
-  }
+}
+
+const CategoryAndTags = ({ article }) => <Footer>
+  {getCategory(article)}
+  {getTags(article)}
+</Footer>
+export { CategoryAndTags };
+
+export default ({ article }) => <Footer>
+  {getCategory(article)}
+  {getTags(article)}
   <More>
     <MoreLink to={`/articles/${article.id}`}>展开全文>></MoreLink>
   </More>
