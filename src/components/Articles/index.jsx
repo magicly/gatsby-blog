@@ -5,9 +5,10 @@ import MediaQuery from 'react-responsive';
 import styled from 'styled-components'
 
 import Article from './Article';
+import Nav from './Nav';
 
 
-export default ({ articles }) => {
+export default ({ articles, current, total }) => {
   return (
     <div>
       {articles.map(article => {
@@ -15,6 +16,7 @@ export default ({ articles }) => {
           <Article key={article.id} article={article} />
         );
       })}
+      <Nav current={current} total={total} />
     </div>
   );
 }

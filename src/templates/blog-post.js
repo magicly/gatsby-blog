@@ -12,9 +12,7 @@ injectGlobal`
     vertical-align: middle;
     max-width: 100%;
   }
-
 `
-
 const Article = styled.div`
   margin: 30px;
   position: relative;

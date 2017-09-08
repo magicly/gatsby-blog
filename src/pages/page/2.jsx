@@ -1,6 +1,6 @@
 import React from "react"
 import MediaQuery from 'react-responsive';
-import Articles from '../components/Articles';
+import Articles from '../../components/Articles';
 
 import Link from "gatsby-link"
 import Helmet from "react-helmet"
@@ -23,7 +23,7 @@ const Index = (props) => {
   const categoryList = articles.map(post => post.category)
   const tagsList = articles.map(post => post.tags)
   const total = posts.length;
-  const main = <Articles articles={articles} current={1} total={3} />;
+  const main = <Articles articles={articles} current={2} total={3} />;
   return (
     <div>
       <Helmet title={siteTitle} />
@@ -35,13 +35,14 @@ const Index = (props) => {
 export default Index;
 
 export const pageQuery = graphql`
-query IndexQuery {
+query IndexQuery2 {
   site {
     siteMetadata {
       title
     }
   }
   allMarkdownRemark(
+    skip: 10,
     limit: 10,
     filter: { frontmatter: { draft: { ne: true } } }
     sort: {fields: [frontmatter___date], order: DESC}
