@@ -12,6 +12,6 @@ const Content = styled.p`
 `
 
 export default ({ article }) => <Summary>
-  <Content>{article.summary}</Content>
+  <Content dangerouslySetInnerHTML={{ __html: article.summary }} />
   <Link to={`/articles/${article.id}`}>more>></Link>
 </Summary>

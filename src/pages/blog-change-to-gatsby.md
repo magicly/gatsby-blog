@@ -10,6 +10,8 @@ date: "2017-07-09T11:45:42Z"
 
 之前用[Hexo](https://hexo.io)写的blog，没有太大问题（反正我也写得少）。由于国内网络环境，托管在[Github](https://github.cm)的页面访问很慢，于是我想，是否可以像用[React](https://facebook.github.io/react/)那样开发， index.html只是一个简单的包装页面， 所有资源都打包放到bundle.js（当然webpack是可以支持code spliting的），这样我可以把index.html放在国外，然后在里面引用放在国内免费CDN上的bundle.js，这样速度就能达到最大化。 至于为什么不把index.html也放国内，因为要备案啊！！！备案啊！！！备案啊！！！一般谁会愿意为了写个blog去折腾呢？
 
+<!-- more -->
+
 于是google搜索react static site generator，浏览之后发现了[Gatsby][gatsby]这个开源项目，简直是神器！不仅是用React实现的项目，而且用[graphql][graphql]来实现支持多数据源，且采用了很多最佳实践，包括[Service Work](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers)、离线使用等。 而且一个React Component是一个页面， 当然markdown通过[Remark](http://remark.js.org/)转化也对应一个页面，这样平时写blog就直接用markdown，有一些复杂的演示项目就可以直接写React Component了，而且后面会支持直接在markdown中应用React Component， 想想就有点小激动呢。
 
 折腾了一周，刚好碰到前两天[发布了1.0版本](https://twitter.com/gatsbyjs/status/883051117013123072)，记录一下使用方式。

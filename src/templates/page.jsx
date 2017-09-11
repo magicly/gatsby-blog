@@ -11,11 +11,14 @@ const Index = (props) => {
   const codingnet = props.data.site.siteMetadata.codingnet;
 
   const articles = posts.map(post => {
+    const html = post.node.html;
+    const moreOffset = html.indexOf('<!-- more -->');
+    const summary = html.slice(0, moreOffset === -1 ? 800 : moreOffset);
     return {
       id: post.node.fields.slug.replace('/', ''),
       time: post.node.frontmatter.date,
       title: post.node.frontmatter.title,
-      summary: post.node.excerpt,
+      summary,
       category: post.node.frontmatter.category,
       tags: post.node.frontmatter.tags,
     }
@@ -50,6 +53,7 @@ query IndexQuery($skip: Int!) {
     ) {
     edges {
       node {
+        html
         timeToRead
         excerpt
         fields {
