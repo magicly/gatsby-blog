@@ -14,7 +14,7 @@ const Overlay = styled.div`
   background: #4d4d4d;
 `
 const MenuBtn = styled.div`
-  position: fixed;
+  position: absolute;
   width: 50px;
   height: 50px;
   top: 0;
