@@ -32,6 +32,18 @@ const ArticleEntry = styled.div`
     font-size: 14px;
     margin: 10px 0;
   }
+  ul li:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    background: #aaa;
+    display: inline-block;
+    margin-right: 10px;
+    float: left;
+    margin-top: 10px;
+  }
   li ul {
     margin-left: 30px;
   }

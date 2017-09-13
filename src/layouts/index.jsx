@@ -34,18 +34,6 @@ injectGlobal`
     margin: 0;
     padding: 0;
   }
-  ul li:before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border: 1px solid #999;
-    border-radius: 10px;
-    background: #aaa;
-    display: inline-block;
-    margin-right: 10px;
-    float: left;
-    margin-top: 10px;
-  }
   a {
     background: transparent;
     text-decoration: none;
