@@ -55,10 +55,10 @@ math: true
     contentDOM.style.transform = 'rotate(90deg)';
   }
 ```
-![正确旋转](/landscape-right.png)
+![正确旋转](/blogimgs/landscape-right.png)
 
 但是如果用户的屏幕旋转按钮开着，然后用户又把手机横过来，就悲剧了，如下图。
-![错误旋转](/landscape-wrong.png)
+![错误旋转](/blogimgs/landscape-wrong.png)
 
 所以我们还需要监听屏幕变化，如果用户自己把屏幕横过来，就把之前的旋转去掉。
 ```js
