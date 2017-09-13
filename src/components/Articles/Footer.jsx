@@ -88,7 +88,7 @@ const getTags = article => {
     </span>
 }
 
-const CategoryAndTags = ({ article }) => <Footer>
+const CategoryAndTags = ({ article, className }) => <Footer className={className}>
   {getCategory(article)}
   {getTags(article)}
 </Footer>
