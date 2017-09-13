@@ -7,9 +7,8 @@ import Header from './Header';
 import { CategoryAndTags } from './Footer';
 
 const Article = styled.div`
-  margin-left: 30px;
   background: #fff;
-  padding: 20px 100px 20px 0;
+  padding: 20px 10px 0px 10px;
   border-bottom: 1px solid #eee;
   border-top: 1px solid #fff;
   position: relative;
@@ -19,6 +18,13 @@ const Article = styled.div`
     padding-top: 0;
     padding-right: 0;
     padding-bottom: 0;
+    border: none;
+    a {
+      display: inline;
+    }
+    time {
+      float: right;
+    }
   }
   a {
     font-size: 16px;
