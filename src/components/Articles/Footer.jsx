@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "gatsby-link"
 import styled from 'styled-components'
+import kebabCase from "lodash/kebabCase"
 
 const CategoryLink = styled(Link) `
   background: #ba8f6c;
@@ -64,20 +65,10 @@ const Icon = styled.i`
   margin-right: 10px;
   margin-top: 6px;
 `
-const TagIcon = Icon.extend`
-  :before {
-    content: "\\e815";
-  }
-`
-const CategoryIcon = Icon.extend`
-  :before {
-    content: "\\e622";
-  }
-`
 
 const getCategory = article => {
   return article.category &&
-    <span><CategoryIcon className="iconfont" />
+    <span><Icon className="iconfont icon-category" />
       <CategoryLink
         to={`/categories/${article.category}`}
       >
@@ -88,9 +79,9 @@ const getCategory = article => {
 
 const getTags = article => {
   return article.tags && article.tags.length > 0 &&
-    <span><TagIcon className="iconfont" />
+    <span><Icon className="iconfont icon-tag" />
       {article.tags.map((tag, i) => (
-        <TagLink to={`/tags/${tag}`} key={tag}>
+        <TagLink to={`/tags/${kebabCase(tag)}`} key={tag}>
           {tag}{' '}
         </TagLink>
       ))}
@@ -107,6 +98,6 @@ export default ({ article }) => <Footer>
   {getCategory(article)}
   {getTags(article)}
   <More>
-    <MoreLink to={`/articles/${article.id}`}>展开全文>></MoreLink>
+    <MoreLink to={`/${article.id}`}>展开全文>></MoreLink>
   </More>
 </Footer>

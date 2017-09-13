@@ -36,6 +36,7 @@ module.exports = React.createClass({
           />
           {this.props.headComponents}
           <link rel="shortcut icon" href={favicon} />
+          <link rel="stylesheet" href="//at.alicdn.com/t/font_410056_cefaudr3vb98jjor.css" />
           {css}
           {head.title.toComponent()}
           {head.meta.toComponent()}

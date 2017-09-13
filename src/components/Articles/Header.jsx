@@ -24,24 +24,21 @@ const Date = styled.time`
 `
 const DateIcon = styled.i`
   margin: 5px 5px 5px 0;
-  :before {
-    content: "\\e65e";
-  }
 `
 
 export default ({ article }) => <Header>
   {
     article.id ?
-      <Title to={`/articles/${article.id}`}>
+      <Title to={`${article.id}`}>
         {article.title}
       </Title>
       :
-      <TitleWithoutLink to={`/articles/${article.id}`}>
+      <TitleWithoutLink to={`${article.id}`}>
         {article.title}
       </TitleWithoutLink>
   }
   <Date>
-    <DateIcon className="iconfont" />
+    <DateIcon className="iconfont icon-calendarok" />
     {article.time || '2017-01-01'}
   </Date>
 </Header>

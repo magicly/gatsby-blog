@@ -28,22 +28,15 @@ const ArticleEntry = styled.div`
   line-height: 1.8em;
   padding: 0 7.6923%;
   font-size: 16px;
-
-  & > ul, ol {
-    margin: 0;
-    padding: 0;
+  ul {
+    font-size: 14px;
+    margin: 10px 0;
   }
-  & > ul li:before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    border: 1px solid #999;
-    border-radius: 10px;
-    background: #aaa;
-    display: inline-block;
-    margin-right: 10px;
-    float: left;
-    margin-top: 10px;
+  li ul {
+    margin-left: 30px;
+  }
+  li ul li:before {
+    background: #dedede;
   }
 `
 const Nav = styled.nav`
@@ -54,18 +47,8 @@ const Nav = styled.nav`
 const PrevLink = styled(Link) `
   float: left;
 `
-const PrevArrow = styled.i`
-  :before {
-    content: "\\e652";
-  }
-`
 const NextLink = styled(Link) `
   float: right;
-`
-const NextArrow = styled.i`
-  :before {
-    content: "\\e656";
-  }
 `
 const Comment = styled.div`
   padding: 0 7.6923%;
@@ -108,11 +91,11 @@ class BlogPostTemplate extends React.Component {
         <Nav>
           {
             this.props.pathContext.prev.url && this.props.pathContext.prev.title &&
-            <PrevLink to={'/articles' + this.props.pathContext.prev.url}><PrevArrow className="iconfont" />{this.props.pathContext.prev.title}</PrevLink>
+            <PrevLink to={this.props.pathContext.prev.url}><i className="iconfont icon-arrowleftcircle" />{this.props.pathContext.prev.title}</PrevLink>
           }
           {
             this.props.pathContext.next.url && this.props.pathContext.next.title &&
-            <NextLink to={'/articles' + this.props.pathContext.next.url}>{this.props.pathContext.next.title}<NextArrow className="iconfont" /></NextLink>
+            <NextLink to={this.props.pathContext.next.url}>{this.props.pathContext.next.title}<i className="iconfont icon-arrowrightcircle" /></NextLink>
           }
         </Nav>
         <Comment id="comments" />

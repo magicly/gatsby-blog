@@ -56,6 +56,7 @@ const Social = styled.div`
 `
 const ColorA = styled.a`
   color: #696969;
+  cursor: pointer;
 `
 const Link = styled(GatsbyLink) `
   color: #696969;
@@ -69,7 +70,7 @@ const SocialLink = ColorA.extend`
   margin: 0 8px 15px;
   transition: .3s;
   text-align: center;
-  // color: #fff;
+  color: #fff;
   opacity: .7;
   width: 28px;
   height: 28px;
@@ -78,26 +79,25 @@ const SocialLink = ColorA.extend`
 const GithubLink = SocialLink.extend`
   background: #afb6ca;
   border: 1px solid #afb6ca;
-  :after {
-    content: "\\e8ee";
-  }
 `
 const WeiboLink = SocialLink.extend`
   background: #aaf;
   border: 1px solid #aaf;
-  :after {
-    content: "\\e613";
-  }
 `
 const TwitterLink = SocialLink.extend`
   background: #1DA1F2;
   border: 1px solid #1DA1F2;
-  :after {
-    content: "\\ec9c";
-  }
 `
-const SideBar = ({ className }) => {
-  return <div className={className}>
+const SideBar = styled.div`
+  background-color: white;
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  opacity: 1;
+`
+export default ({ showMiddle }) => {
+  return <SideBar>
     <Overlay />
     <SelfIntro>
       <Link to="/">
@@ -116,23 +116,13 @@ const SideBar = ({ className }) => {
       </ul>
     </Menu>
     <Menu2>
-      <ColorA>所有文章 / </ColorA>
-      <Link to="/about">关于我</Link>
+      <ColorA onClick={() => showMiddle('all')}>所有文章 / </ColorA>
+      <ColorA onClick={() => showMiddle('me')}>关于我</ColorA>
     </Menu2>
     <Social>
-      <GithubLink className="iconfont" href="https://github.com/magicly" title="Github" target="_blank"></GithubLink>
-      <WeiboLink className="iconfont" href="https://weibo.com/magicly" title="Weibo" target="_blank"></WeiboLink>
-      <TwitterLink className="iconfont" href="https://twitter.com/magicly007" title="Twitter" target="_blank"></TwitterLink>
+      <GithubLink className="iconfont icon-github" href="https://github.com/magicly" title="Github" target="_blank"></GithubLink>
+      <WeiboLink className="iconfont icon-weibo" href="https://weibo.com/magicly" title="Weibo" target="_blank"></WeiboLink>
+      <TwitterLink className="iconfont icon-twitter" href="https://twitter.com/magicly007" title="Twitter" target="_blank"></TwitterLink>
     </Social>
-  </div>
+  </SideBar>
 }
-
-const StyledSideBar = styled(SideBar) `
-  background-color: white;
-  width: 300px;
-  height: 100%;
-  position: fixed;
-  text-align: center;
-  opacity: 1;
-`
-export default StyledSideBar;

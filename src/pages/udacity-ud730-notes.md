@@ -39,7 +39,6 @@ date: "2017-03-31T09:48:11Z"
   * feature map
   * stride
   * max pooling
-* 
 
 # 循环神经网络
 * Embeddings
