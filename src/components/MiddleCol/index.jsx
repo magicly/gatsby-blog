@@ -47,10 +47,12 @@ export default (props) => {
       props.showContent === 'me' ?
         <Section>
           <MeDiv>
-            Just For Fun!
+            <div>
+              Just For Fun!
             <br />
-            <br />
-            用科技优化生活！
+              <br />
+              <a href="https://www.magicfun.ai" target="_blank">用科技优化生活！</a>
+            </div>
           </MeDiv>
         </Section>
         :
