@@ -15,7 +15,7 @@ injectGlobal`
     max-width: 100%;
   }
 `
-const Article = styled.div`
+const Article = styled.article`
   margin: 30px;
   position: relative;
   border: 1px solid #ddd;
@@ -23,6 +23,14 @@ const Article = styled.div`
   border-bottom: 1px solid #fff;
   background: #fff;
   transition: all .2s ease-in;
+
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    font-size: 16px;
+    color: #555;
+  }
 `
 const ArticleEntry = styled.div`
   line-height: 1.8em;
@@ -50,17 +58,57 @@ const ArticleEntry = styled.div`
   li ul li:before {
     background: #dedede;
   }
+  ol {
+    font-size: 14px;
+    margin: 10px 0;
+    counter-reset: item;
+  }
+  ol li:before {
+    counter-increment: item;
+    content: counter(item) ".";
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 10px 0 30px;
+  }
 `
 const Nav = styled.nav`
   margin: 0 0 20px;
   padding: 0 32px 10px;
   min-height: 30px;
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+    padding: 5px 10px 10px;
+  }
+  a {
+    @media screen and (max-width: 800px) {
+      margin: 5px 0;
+      display: block;
+      clear: both;
+    }
+  }
 `
 const PrevLink = styled(Link) `
   float: left;
+  i {
+    margin-right: 5px;
+  }
 `
 const NextLink = styled(Link) `
   float: right;
+  i {
+    margin-left: 5px;
+  }
+  @media screen and (max-width: 800px) {
+    float: none;
+    i {
+      float: left;
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
 `
 const Comment = styled.div`
   padding: 0 7.6923%;
@@ -90,12 +138,11 @@ class BlogPostTemplate extends React.Component {
     post.html = post.html.replace(/<a href="/g, '<a target="_blank" href="')
     return (
       <div>
+        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+        {
+          post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
+        }
         <Article>
-          <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-          {
-            post.frontmatter.math ? <Helmet script={[{ src: `//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML`, type: `text/javascript` }]} /> : ''
-          }
-
           <ArticleHeader article={{ title: post.frontmatter.title, time: post.frontmatter.date }} />
           <ArticleEntry dangerouslySetInnerHTML={{ __html: post.html }} />
           <CategoryAndTags article={{ category: post.frontmatter.category, tags: post.frontmatter.tags }} />

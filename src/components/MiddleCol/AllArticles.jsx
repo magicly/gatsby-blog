@@ -134,7 +134,7 @@ export default class AllArticles extends React.Component {
         {
           selectedArticles.map(article => {
             return <li key={article.id}>
-              <Link className="search-title" to={`${article.id}`}>
+              <Link className="search-title" to={`${article.id}`} onClick={this.props.close}>
                 <i className="icon iconfont icon-quoteleft"></i>
                 <span>{article.title}</span>
               </Link>

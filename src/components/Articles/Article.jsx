@@ -29,6 +29,13 @@ const Article = styled.div`
     float: left;
     margin-top: 10px;
   }
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    font-size: 16px;
+    color: #555;
+  }
 `
 
 export default ({ article }) => <Article>

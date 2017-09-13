@@ -1,8 +1,10 @@
 import React from "react"
+import MediaQuery from 'react-responsive';
 import styled, { injectGlobal } from 'styled-components';
 
 import SideBar from '../components/LeftCol';
 import MiddleCol from '../components/MiddleCol';
+import MobileNav from '../components/MobileNav';
 import Footer from '../components/Footer';
 
 require('prismjs/themes/prism-solarizedlight.css')
@@ -27,7 +29,7 @@ injectGlobal`
     font-size: 1rem;
     line-height: 1.75;
   }
-  ul {
+  ul, ol {
     list-style-type: none;
   }
   dd, dl, li, ol, ul {
@@ -44,6 +46,8 @@ injectGlobal`
   }
 `
 
+const MidleCol = styled.div`
+`
 const RightCol = styled.div`
     position: absolute;
     right: 0;
@@ -51,6 +55,9 @@ const RightCol = styled.div`
     background: #eaeaea;
     left: 300px;
     width: auto;
+    @media (max-width: 800px) {
+      left: 0;
+	  }
 `
 const RightCol2 = RightCol.extend`
     left: 660px;
@@ -82,7 +89,12 @@ class DefaultLayout extends React.Component {
   render() {
     return (
       <div>
-        <SideBar showMiddle={this.showMiddleHandler} />
+        <MediaQuery query="(min-width:800px)">
+          <SideBar showMiddle={this.showMiddleHandler} />
+        </MediaQuery>
+        <MediaQuery query="(max-width:800px)">
+          <MobileNav showMiddle={this.showMiddleHandler} />
+        </MediaQuery>
         {
           this.state.showContent ?
             < MiddleCol all={this.articles} showContent={this.state.showContent} close={() => this.showMiddleHandler(false)} />

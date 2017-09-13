@@ -27,13 +27,7 @@ const Index = (props) => {
   const tagsList = articles.map(post => post.tags)
   const total = props.pathContext.total;
   const current = props.pathContext.current;
-  const main = <Articles articles={articles} current={current} total={total} />;
-  return (
-    <div>
-      <Helmet title={siteTitle} />
-      <div>{main}</div>
-    </div>
-  );
+  return <Articles articles={articles} current={current} total={total} />
 }
 
 export default Index;

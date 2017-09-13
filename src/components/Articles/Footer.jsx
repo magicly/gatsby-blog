@@ -46,6 +46,13 @@ const Footer = styled.div`
   margin: 30px 7.6923% 0;
   min-height: 72px;
   border-top: 1px solid #ddd;
+
+  @media screen and (max-width: 800px) {
+    min-height: 40px;
+    padding-top: 10px;
+    margin: 0;
+    border-top: 1px solid #ddd;
+  }
 `
 const More = styled.p`
   margin-top: 0;
@@ -65,39 +72,48 @@ const Icon = styled.i`
   margin-right: 10px;
   margin-top: 6px;
 `
+const Category = styled.div`
+  float: left;
+`
+const Tags = Category.extend``;
 
+const ClearFloat = styled.div`
+  clear: both;
+`
 const getCategory = article => {
   return article.category &&
-    <span><Icon className="iconfont icon-category" />
+    <Category><Icon className="iconfont icon-category" />
       <CategoryLink
         to={`/categories/${article.category}`}
       >
         {article.category}
       </CategoryLink>&nbsp;&nbsp;
-      </span>
+      </Category>
 };
 
 const getTags = article => {
   return article.tags && article.tags.length > 0 &&
-    <span><Icon className="iconfont icon-tag" />
+    <Tags><Icon className="iconfont icon-tag" />
       {article.tags.map((tag, i) => (
         <TagLink to={`/tags/${kebabCase(tag)}`} key={tag}>
           {tag}{' '}
         </TagLink>
       ))}
-    </span>
+    </Tags>
 }
 
 const CategoryAndTags = ({ article, className }) => <Footer className={className}>
-  {getCategory(article)}
   {getTags(article)}
+  {getCategory(article)}
+  <ClearFloat />
 </Footer>
 export { CategoryAndTags };
 
 export default ({ article }) => <Footer>
-  {getCategory(article)}
   {getTags(article)}
+  {getCategory(article)}
   <More>
     <MoreLink to={`/${article.id}`}>展开全文>></MoreLink>
   </More>
+  <ClearFloat />
 </Footer>

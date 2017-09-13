@@ -16,6 +16,9 @@ const MidleCol = styled.div`
       top: 0;
       right: 5px;
     }
+    @media (max-width: 800px) {
+      left: 0;
+	  }
 `
 const Section = styled.section`
     background-color: #b6cac4;
@@ -39,7 +42,7 @@ export default (props) => {
     <i className="iconfont icon-close" onClick={props.close}></i>
     {
       props.showContent === 'all' ?
-        <AllArticles all={props.all} />
+        <AllArticles all={props.all} close={props.close} />
         :
         null
     }
