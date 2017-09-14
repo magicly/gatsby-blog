@@ -6,6 +6,20 @@ category: FE
 date: "2017-07-19T17:45:42Z"
 ---
 
+=========2017-09-14更新===========
+
+推荐大家看看这个网站[learnlayout](http://learnlayout.com/)， 比较全面。
+
+其中可能会经常看到下面这段话：
+> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+我查了一下，原来是用于排版演示用的拉丁文：
+> Lorem ipsum是指一篇常用于排版设计领域的拉丁文文章，主要的目的为测试文章或文字在不同字型、版型下看起来的效果。中文的类似用法则称为乱数假文、随机假文。
+
+有兴趣的可以看看[Wiki](https://zh.wikipedia.org/wiki/Lorem_ipsum)， 我还发现原来阮一峰老师之前也写过一篇[介绍文章](http://www.ruanyifeng.com/blog/2009/04/lorem_ipsum.html)呢。
+
+==============================
+
 布局是CSS中一个很重要的部分，甚至我觉得是最重要也是最难的部分，其他诸如字体大小、颜色等等都是很容易的。最近总结一下使用过的CSS常用布局，包括水平居中、垂直居中、单列布局、多列布局等，以及最新的flex布局，希望能给前端小伙伴一些帮助，也作为自己的知识总结。
 
 <!-- more -->
