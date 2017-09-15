@@ -6,6 +6,7 @@ Gatsby starter for creating a blog. Have a look at [My Blog](https://magicly.me/
 * [Gatsby][gatsby]
 * [Styled Components][sc]
 * [Gitment][gitment]
+* [IconFont+][iconfont]
 
 theme inspired by [Yilia][yilia], but not exact same due my css ability.
 
