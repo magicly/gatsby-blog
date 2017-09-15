@@ -4,10 +4,10 @@ Gatsby starter for creating a blog. Have a look at [My Blog](https://magicly.me/
 
 # Powered By
 * [Gatsby][gatsby]
-* [Styled Components](sc)
-* [Gitment](gitment)
+* [Styled Components][sc]
+* [Gitment][gitment]
 
-theme inspired by [Yilia](yilia), but not exact same due my css ability.
+theme inspired by [Yilia][yilia], but not exact same due my css ability.
 
 # Get started
 ```bash
@@ -32,11 +32,11 @@ After you deploy successfully once, you may use `deploy.sh` to help you. Maybe y
 
 使用了这些项目：
 * [Gatsby][gatsby]
-* [Styled Components](sc)
-* [Gitment](gitment)
+* [Styled Components][sc]
+* [Gitment][gitment]
 * [IconFont+][iconfont]
 
-主题参考了[Yilia](yilia), 之前微博私信了[作者](http://weibo.com/litten225)想邀约他一起移植[Yilia][yilia]主题到[Gatsby][gatsby]的， 不过作者一直没回复我， 我就大概参考着写了下CSS样式。由于不熟悉SCSS，有些细节移植得不好，动画也没有做，iconfont我用的阿里的[IconFont+][iconfont]自己找的。
+主题参考了[Yilia][yilia], 之前微博私信了[作者](http://weibo.com/litten225)想邀约他一起移植[Yilia][yilia]主题到[Gatsby][gatsby]的， 不过作者一直没回复我， 我就大概参考着写了下CSS样式。由于不熟悉SCSS，有些细节移植得不好，动画也没有做，iconfont我用的阿里的[IconFont+][iconfont]自己找的。
 
 # 开始使用
 直接clone本项目，然后安装启动就可以了。
