@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#gatsby build
+gatsby build
 
 git checkout -- public/404.html
 
