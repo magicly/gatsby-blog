@@ -7,8 +7,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
   const pages = []
-  const blogPost = path.resolve("./src/templates/blog-post.js")
-  const tagPage = path.resolve("./src/templates/tag.js")
+  const blogPost = path.resolve("./src/templates/blog-post.jsx")
+  const tagPage = path.resolve("./src/templates/tag.jsx")
   const Page = path.resolve("./src/templates/page.jsx")
   return graphql(
     `
