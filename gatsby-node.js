@@ -96,9 +96,13 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   switch (node.internal.type) {
     case 'File':
       const parsedFilePath = path.parse(node.relativePath)
-      let slug = `/${parsedFilePath.dir}/`
-      if (slug === '//') {
+      let slug;
+      if (parsedFilePath.dir === '') {// 空目录，直接是md文件
         slug = `/${parsedFilePath.name}/`
+      } else if (parsedFilePath.name !== 'index') {// md文件存放在目录下，文件名不为index.md（可能有多个文件），则url = dir + name
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}`
+      } else { // md文件存放在目录下，文件名为index.md，则url = dir
+        slug = `/${parsedFilePath.dir}/`
       }
       createNodeField({
         node,
