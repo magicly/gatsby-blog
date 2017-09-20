@@ -10,6 +10,8 @@ date: "2017-08-29T13:15:42Z"
 
 [css modules][css modules]应该是很流行的了， 说实话我没有用过， 不过在浏览作者主页的时候意外发现了[styled-components][sc]，发现这就是我想要的！大家可以看看下面几个视频，先有个大概印象。
 
+<!-- more -->
+
 [styled-components][sc]作者[Max Stoiber][mxstbr]在2017年React大会上的演讲：
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2j9rSur_mnk" frameborder="0" allowfullscreen></iframe>
 

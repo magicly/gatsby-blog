@@ -14,6 +14,9 @@ date: "2017-09-15T10:00:15Z"
 * [Spaces](https://chrome.google.com/webstore/detail/spaces/cenkmofngpohdnkbjdpilgpmbiiljjim)，方便讲tabs分类搜藏起来， 这对于我这种长期开着100+个tabs的来说，确实很有必要，功能够用， 有些bug，暂时没找到更合适的。
 * [Markdown Preview Plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl)，预览markdown。
 * [UC二维码](https://chrome.google.com/webstore/detail/uc-qr-code/nhelohnehpahakjoklmodmogclacjgdj)，将当前页面链接生成二维码
+
+<!-- more -->
+
 * [SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega)，代理软件，XX必须。
 * [ModHeader](https://chrome.google.com/webstore/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj)，可以修改请求头，拿来测试CORS等很方便。
 * [Requestly](https://www.requestly.in/)，功能比ModHeader更强大一些
