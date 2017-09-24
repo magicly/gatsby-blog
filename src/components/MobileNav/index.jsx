@@ -134,6 +134,23 @@ const TwitterLink = SocialLink.extend`
   background: #1DA1F2;
   border: 1px solid #1DA1F2;
 `
+const WXLink = SocialLink.extend`
+  background: green;
+  border: 1px solid green;
+  img {
+    display: none;
+  }
+  :hover {
+    img {
+      position:absolute;
+      left: 40px;
+      bottom: 20px;
+      display: block;
+      width: 215px;
+      height: 215px;
+    }
+  }
+`
 export default ({ showMiddle }) => {
   return <MobileNav>
     <Overlay />
@@ -156,6 +173,9 @@ export default ({ showMiddle }) => {
       <GithubLink className="iconfont icon-github" href="https://github.com/magicly" title="Github" target="_blank"></GithubLink>
       <WeiboLink className="iconfont icon-weibo" href="https://weibo.com/magicly" title="Weibo" target="_blank"></WeiboLink>
       <TwitterLink className="iconfont icon-twitter" href="https://twitter.com/magicly007" title="Twitter" target="_blank"></TwitterLink>
+      <WXLink className="iconfont icon-weixin" href="https://mp.weixin.qq.com/s?__biz=MzI2NzQ0NjQ2Ng==&mid=2247483661&idx=1&sn=e75ed1772653a445b7751e4a84dd8f51&chksm=eafff0a0dd8879b6708cb1e152f74bd327d1c92f53f61ab992dea5dfe74c7e3fe8b2162bb591&mpshare=1&scene=1&srcid=0924ruejjAea8tOrkIE1hXkr#rd" title="Twitter" target="_blank">
+        <img src="https://static.magicfun.ai/qrcode/jsforfun.jpg" />
+      </WXLink>
     </Social>
     <Menu>
       <ul>
