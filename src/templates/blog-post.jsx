@@ -72,6 +72,7 @@ const ArticleEntry = styled.div`
   @media screen and (max-width: 800px) {
     padding: 10px 0 30px;
   }
+  p {text-indent: 2rem};
 `
 const Nav = styled.nav`
   margin: 0 0 20px;

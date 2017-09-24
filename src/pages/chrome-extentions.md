@@ -10,7 +10,6 @@ date: "2017-09-15T10:00:15Z"
 
 * [SourceGraph](https://about.sourcegraph.com/), 自从我发现sourcegraph，我就把octotree禁用了，sourcegraph简直就是一个活生生的浏览器里的VSCode，有强大的IDE功能。
 * [octotree](https://github.com/buunguyen/octotree)，方便看github代码
-
 * [Spaces](https://chrome.google.com/webstore/detail/spaces/cenkmofngpohdnkbjdpilgpmbiiljjim)，方便讲tabs分类搜藏起来， 这对于我这种长期开着100+个tabs的来说，确实很有必要，功能够用， 有些bug，暂时没找到更合适的。
 * [Markdown Preview Plus](https://chrome.google.com/webstore/detail/markdown-preview-plus/febilkbfcbhebfnokafefeacimjdckgl)，预览markdown。
 * [UC二维码](https://chrome.google.com/webstore/detail/uc-qr-code/nhelohnehpahakjoklmodmogclacjgdj)，将当前页面链接生成二维码
