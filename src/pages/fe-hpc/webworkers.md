@@ -1,5 +1,5 @@
 ---
-title: 前端高性能计算之WebWorkers
+title: 前端高性能计算之一：WebWorkers
 draft: false
 tags: [js, hpc]
 category: FE

@@ -73,6 +73,9 @@ const ArticleEntry = styled.div`
     padding: 10px 0 30px;
   }
   p {text-indent: 2rem};
+  table, tr, th, td {
+    border: 1px solid black;
+  }
 `
 const Nav = styled.nav`
   margin: 0 0 20px;
