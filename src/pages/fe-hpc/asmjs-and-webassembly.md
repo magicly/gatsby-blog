@@ -6,7 +6,7 @@ category: FE
 date: "2017-09-25T15:40:42Z"
 ---
 
-[前一篇](./webworkers)我们说了要解决高性能计算的两个方法，一个是并发用WebWorkers，另一个就是用更底层的静态语言。
+[前一篇](/fe-hpc/webworkers)我们说了要解决高性能计算的两个方法，一个是并发用WebWorkers，另一个就是用更底层的静态语言。
 
 2012年，Mozilla的工程师[Alon Zakai](https://twitter.com/kripken)在研究[LLVM](http://llvm.org/)编译器时突发奇想：能不能把C/C++编译成Javascript，并且尽量达到Native代码的速度呢？于是他开发了[Emscripten][Emscripten]编译器，用于将C/C++代码编译成Javascript的一个子集[asm.js][asm.js]，性能差不多是原生代码的50%。大家可以看看[这个PPT](http://kripken.github.io/mloc_emscripten_talk/)。
 
