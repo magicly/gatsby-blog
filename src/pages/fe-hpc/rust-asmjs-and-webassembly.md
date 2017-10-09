@@ -8,7 +8,9 @@ date: "2017-10-09T15:30:42Z"
 
 [前一篇](/fe-hpc/asmjs-and-webassembly)我们探索了用[Emscripten][Emscripten]编译`C`代码到`asm.js`和`WebAssembly`，使前端代码执行速度大大提升，但是实际项目中由于`C`语言缺乏很多高级特性，不利于开发大型项目（说`C`可以开发操作系统kernel这种大型项目的同学不好意思，我没那么nb），而`C++`我又觉得太复杂，也没有用过`C++`做过大型项目，所以我最后选择了[Rust](https://www.rust-lang.org/)。
 
-一开始也纠结过要用`Go`还是`Rust`或者`Swift`的，后来发现`Go`目前还不[支持编译到`WebAssembly`]()，Swift案例说应该可以支持的，因为都是用LLVM做的编译器，不过没有找到好的资料。另外对Rust的一些特性很是喜欢，听说`Rust很复杂，比较像Scala和Haskell`，而偏偏我对Scala还算熟悉，也学过一下Haskell，所以决定尝试一下Rust。
+一开始也纠结过要用`Go`还是`Rust`或者`Swift`的，后来发现`Go`目前还不[支持编译到`WebAssembly`](https://github.com/golang/go/issues/18892)，Swift按理说应该可以支持的，因为都是用LLVM做的编译器，不过没有找到好的资料，好像说要自己编译LLVM去支持https://stackoverflow.com/questions/46572144/compile-swift-to-webassembly 。另外对Rust的一些特性很是喜欢，听说`Rust很复杂，比较像Scala和Haskell`，而偏偏我对Scala还算熟悉，也学过一下Haskell，所以决定尝试一下Rust。
+
+https://github.com/ChristianMurphy/compile-to-web 这里可以查看目前能编译到WebAssembly的语言。
 
 PS, 话说asm.js和Rust都是Mozilla搞的呢。
 <!-- more -->
@@ -162,7 +164,7 @@ wasm.initialize({ noExitRuntime: true }).then(module => {
 })
 ```
 然后执行`npm start`，访问[http://localhost:8080/](http://localhost:8080/)就可以看到调用rust代码的效果了。并且还支持热更新哦，直接修改rust代码，保存，页面就能看到最新效果。
-![Rust WebAssembly console](/blogimgs/rust-webassembly-console.png)o
+![Rust WebAssembly console](/blogimgs/rust-webassembly-console.png)
 
 
 测试了一下前一篇里的代码，直接运行rust优化过的代码只需要300多ms，这个基本跟C代码一样，但是用wasm运行，居然要2.7s左右，不知道是哪里没有配置好，还是说现在Rust编译成wasm没有优化好。Rust支持WebAssembly应该还不是特别成熟，可以关注https://github.com/rust-lang/rust/issues/38804 跟进。
@@ -180,6 +182,10 @@ wasm.initialize({ noExitRuntime: true }).then(module => {
 * http://asquera.de/blog/2017-04-10/the-path-to-rust-on-the-web/
 * https://github.com/mrdziuban/rust-emscripten-loader
 * https://github.com/ballercat/wasm-loader
+* https://hackernoon.com/compiling-rust-to-webassembly-guide-411066a69fde
+* https://github.com/mbasso/awesome-wasm
+* https://github.com/rust-lang/rust/issues/38805
+* https://davidmcneil.github.io/the-rusty-web/#benchmarks
 * http://asmjs.org/
 * http://webassembly.org/
 * https://kripken.github.io/emscripten-site/index.html
@@ -187,6 +193,7 @@ wasm.initialize({ noExitRuntime: true }).then(module => {
 * http://www.codepool.biz/emscripten-compile-cc-javascript.html
 * http://www.ruanyifeng.com/blog/2017/09/asmjs_emscripten.html
 * https://zhuanlan.zhihu.com/p/25865972
+* https://zhuanlan.zhihu.com/p/24632251
 
 
 [Emscripten]: https://kripken.github.io/emscripten-site/index.html
