@@ -41,10 +41,28 @@ $ npm install paralleljs
 ```js
 const N = 100000000;// 总次数1亿
 
+// 更新自2017-10-24 16：47：00
+// 代码没有任何含义，纯粹是为了模拟一个耗时计算，直接用
+//   for (let i = start; i <= end; i += 1) total += i;
+// 有几个问题，一是代码太简单没有任何稍微复杂一点的操作，后面用C代码优化的时候会优化得很夸张，没法对比。
+// 二是数据溢出问题， 我懒得处理这个问题，下面代码简单地先加起来，然后再减掉，答案显而易见为0，便于测试。
 function sum(start, end) {
   let total = 0;
-  for (let i = start; i <= end; i += 1) total += i;
-  for (let i = start; i <= end; i += 1) total -= i;
+  for (let i = start; i <= end; i += 1) {
+    if (i % 2 == 0 || i % 3 == 1) {
+      total += i;
+    } else if (i % 5 == 0 || i % 7 == 1) {
+      total += i / 2;
+    }
+  }
+  for (let i = start; i <= end; i += 1) {
+    if (i % 2 == 0 || i % 3 == 1) {
+      total -= i;
+    } else if (i % 5 == 0 || i % 7 == 1) {
+      total -= i / 2;
+    }
+  }
+
   return total;
 }
 
@@ -59,6 +77,8 @@ function paraSum(N) {
       return acc + e;
     });
 }
+
+export { N, sum, paraSum }
 ```
 代码比较简单，我这里说几个刚用的时候遇到的坑。
 * **require所有需要的函数**

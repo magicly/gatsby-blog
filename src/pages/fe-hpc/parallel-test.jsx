@@ -9,7 +9,7 @@ export default class Index extends React.Component {
   }
   sumHandler = () => {
     const t1 = Date.now();
-    const result = sum([0, N]);
+    const result = sum(1, N);
     const t2 = Date.now();
     this.setState({
       sumCost: t2 - t1,
