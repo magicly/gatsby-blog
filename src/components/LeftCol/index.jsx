@@ -118,7 +118,8 @@ export default ({ showMiddle }) => {
     <Overlay />
     <SelfIntro>
       <Link to="/">
-        <Avatar src="https://static.oschina.net/uploads/user/53/106378_100.jpg" />
+        {/* <Avatar src="https://static.oschina.net/uploads/user/53/106378_100.jpg" /> */}
+        <Avatar src="https://static.magicfun.ai/images/ly_128.png" />
         {/* <Avatar src="http://tva2.sinaimg.cn/crop.0.0.180.180.180/64256cb5jw1e8qgp5bmzyj2050050aa8.jpg" />  */}
       </Link>
       <Author>
