@@ -115,6 +115,8 @@ html5里面有[FileReader](https://developer.mozilla.org/zh-CN/docs/Web/API/File
 * https://www.jianshu.com/p/97f5cbc66577
 
 
+## ReactRouter v4在非组件页面使用history
+* https://github.com/brickspert/blog/issues/3
 
 
 
