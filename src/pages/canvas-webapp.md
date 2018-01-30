@@ -65,6 +65,16 @@ date: "2018-01-29T14:48:24Z"
 ## canvas透明背景
 * http://www.dengzhr.com/frontend/html/1096
 
+## iPhone上竖屏拍摄图片旋转bug
+iphone和部分三星手机上竖屏拍摄图片会旋转， 需要用[]()读取Orientation，来自己纠正。
+* https://www.jianshu.com/p/8afd55beca5a
+* https://www.bbsmax.com/A/VGzlMnYNJb/
+* https://github.com/exif-js/exif-js/
+* https://segmentfault.com/a/1190000009990033
+* https://aotu.io/notes/2017/05/25/canvas-img-rotate-and-flip/index.html
+
+
+
 ## 轮播图
 轮播图太通用不过了，网上也有很多代码或者插件（很多jQuery的插件）实现。推荐两个：
 * https://github.com/kenwheeler/slick/
