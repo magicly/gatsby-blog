@@ -10,6 +10,7 @@ category: ML
 下面是我参考咨询了很多大牛之后搜集整理的一些学习资料， 基本都是该领域世界最顶尖的高手亲自授课，以及一些最流行的工具库， 值得学习。
 
 <!-- more -->
+* 台湾大学李宏毅老师的机器学习和深度学习课程，http://speech.ee.ntu.edu.tw/~tlkagk/courses.html， bilibili上有视频：https://www.bilibili.com/video/av10590361/ , https://www.bilibili.com/video/av9770302/ 。 另外有个很好的pdf可以快速了解机器学习内容：https://www.slideshare.net/tw_dsconf/ss-62245351 
 * Fast.ai课程，http://course.fast.ai/ ， 中文版http://geek.ai100.com.cn/tag/fast-ai ，已完成，这个是我目前觉得最好的课程。
 * Andrew NG https://www.coursera.org/learn/machine-learning （已完成）
 * Andrew NG Unsupervised Feature Learning and Deep Learning http://deeplearning.stanford.edu/tutorial/ （学习ing）
