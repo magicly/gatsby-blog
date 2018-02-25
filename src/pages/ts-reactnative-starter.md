@@ -246,3 +246,5 @@ Redux在RN中使用跟在React中使用没什么区别，参考[TypeScript React
 * https://palantir.github.io/tslint/usage/rule-flags/
 * https://stackoverflow.com/questions/31605781/why-do-tslint-and-jslint-report-empty-blocks
 * https://medium.com/@rintoj/react-native-with-typescript-40355a90a5d7
+* http://bbs.reactnative.cn/topic/4483/使用typescript编写react-native-高效版
+* https://zhuanlan.zhihu.com/p/27029898
