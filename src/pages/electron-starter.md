@@ -10,6 +10,93 @@ date: "2018-05-12T16:57:42Z"
 
 <!-- more -->
 
+------------2018-05-13 更新----------
+
+使用[electron-react-typescript-boilerplate](https://github.com/iRath96/electron-react-typescript-boilerplate)的时候发现一个问题： 在 class 里面不能使用`arrow function`！ 比如如下代码有问题：
+
+```js
+import * as React from 'react';
+// import { remote } from 'electron';
+// import './App.css';
+
+// const electron = (window as any).require('electron');
+// const fs = electron.remote.require('fs');
+// const ipcRenderer = electron.ipcRenderer;
+
+import { ipcRenderer, remote } from 'electron';
+console.log(ipcRenderer, remote.require('fs'));
+
+// console.log(fs, ipcRenderer);
+
+// const logo = require('./logo.svg');
+
+class App extends React.Component<any, any> {
+  // state = {} as any;
+  constructor(props: any) {
+    super(props);
+    this.state = {} as any;
+  }
+  componentDidMount() {
+    console.log('componentDidMount ');
+  }
+
+  handleClick = () => {
+    // handleClick() {
+    console.log('handleClick');
+    this.setState({
+      name: 'magicly'
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+          To get started, edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <button onClick={this.handleClick}>butotn...</button>
+        {this.state.name}
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+点击 button 的时候会报错:
+
+```js
+warning.js:33 Warning: Can't call setState on a component that is not yet mounted. This is a no-op, but it might indicate a bug in your application. Instead, assign to `this.state` directly or define a `state = {};` class property with the desired state in the App component.
+```
+
+但其实这个是再正常不过的代码了啊， 在普通的`create-react-app`建的项目里面完全没有问题， 即使运行在`electron`中也是完全 ok 的。 所以决定最后还是选择`create-react-app`新建 Typescript 项目， 然后添加 electron 依赖好了。 当然这个脚手架也有好处，就是可以直接使用`import { ipcRenderer, remote } from 'electron';`。
+
+其实后来仔细想了下， 为啥要用 electron 呢？ 相比直接网页多了什么？
+
+* 能获得更多的原生接口？
+
+现在 H5 的丰富接口已经完全够用， 包括 service worker 可以离线， web worker 多线程， websocket， notification 等。
+
+* 高性能？
+
+可以使用 WebAssembly， 并发可以用 web workers.
+
+* 接口请求跨域？
+
+可以通过添加 chrome 插件来支持。
+
+* 浏览器兼容性！
+
+对了， 这个似乎说到了重点， electron 把 node 和 chrome 打包进去了， 能保证运行环境一致， 不用再为兼容性问题头痛！
+
+总之， 如果是自己使用的项目（或者可以跟客户协商的话），其实 chrome 网页基本完全够用了， so， 先就做网页吧。
+
+---
+
 # https://github.com/electron/electron-quick-start
 
 electron 自己出的， 其实就是个 Hello World， 用 JS 语言， 不满足要求。
