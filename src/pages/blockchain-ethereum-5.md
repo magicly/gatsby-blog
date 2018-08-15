@@ -1,6 +1,6 @@
 ---
-title: 区块链系列七：设计自己的cryptocurrency高级功能
-draft: true
+title: 区块链系列九：设计自己的cryptocurrency高级功能
+draft: false
 tags: [Ethereum, 以太坊]
 category: Blockchain
 date: "2018-04-07T07:51:32Z"
