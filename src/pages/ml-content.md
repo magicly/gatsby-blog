@@ -45,6 +45,7 @@ category: ML
 - http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Teaching.html（完成）
 - [**李宏毅深度强化学习(国语)课程(2018)**](https://www.youtube.com/playlist?list=PLJV_el3uVTsODxQFgzMzPLa16h6B8kWM_)，bilibili 上有https://www.bilibili.com/video/av24724071
 - **伯克利的 CS294**， 因为有多个版本， 我把找到的一些链接放着， 看的时候建议直接看最新版：
+  - http://rail.eecs.berkeley.edu/deeprlcourse/
   - [CS294 深度增强学习 这门课的质量是不是不大好？](https://www.zhihu.com/question/61171437)
   - [CS 294: Deep Reinforcement Learning Note（1）](https://zhuanlan.zhihu.com/p/29080505)， 这个应该是以前的版本吧
   - [学到了！UC Berkeley CS 294 深度强化学习课程（附视频与 PPT）](https://www.jiqizhixin.com/articles/uc-berkeley-cs294)
@@ -85,6 +86,8 @@ category: ML
 - [How to build your own AlphaZero AI using Python and Keras](https://medium.com/applied-data-science/how-to-build-your-own-alphazero-ai-using-python-and-keras-7f664945c188)
 - [A Simple Alpha(Go) Zero Tutorial](https://web.stanford.edu/~surag/posts/alphazero.html)
 - https://github.com/tejank10/AlphaGo.jl
+- [https://zhuanlan.zhihu.com/p/34433581](AlphaZero实践——中国象棋（附论文翻译）)
+- [深入浅出看懂 AlphaGo Zero - PaperWeekly 第 51 期](https://yq.aliyun.com/articles/226363)
 - 跟 poker 结合：
   - [So, when will Deepmind AlphaZero play poker versus Libratus](https://forumserver.twoplustwo.com/29/news-views-gossip/so-when-will-deepmind-alphazero-play-poker-versus-libratus-1729898/)
   - [【NIPS 最佳论文引发深度学习论战】AlphaZero 能击败冷扑大师吗？No（Science 论文）](https://zhuanlan.zhihu.com/p/32154212)
