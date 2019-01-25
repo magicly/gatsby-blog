@@ -1,7 +1,7 @@
 ---
 title: 机器学习计划
 draft: false
-date: "2017-02-12T22:04:10Z"
+date: "2019-01-25T15:04:10Z"
 tags: [AI, ML, machine learning, deep learning, 深度学习]
 category: ML
 ---
@@ -125,7 +125,7 @@ category: ML
 - [提高驾驶技术：用 GAN 去除(爱情)动作片中的马赛克和衣服](https://zhuanlan.zhihu.com/p/27199954)
 - https://github.com/NVIDIA/vid2vid
 
----
+--------2017-02-12 22:04:10----------
 
 机器学习已经影响了我们生活中的每一个地方， 了解一些机器学习知识， 便于提高竞争力， 避免被机器替代。
 下面是我参考咨询了很多大牛之后搜集整理的一些学习资料， 基本都是该领域世界最顶尖的高手亲自授课，以及一些最流行的工具库， 值得学习。
