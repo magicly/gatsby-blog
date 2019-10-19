@@ -44,7 +44,7 @@ category: ML
   - https://github.com/JKCooper2/rlai-exercises
 - http://www0.cs.ucl.ac.uk/staff/D.Silver/web/Teaching.html（完成）
 - [**李宏毅深度强化学习(国语)课程(2018)**](https://www.youtube.com/playlist?list=PLJV_el3uVTsODxQFgzMzPLa16h6B8kWM_)，bilibili 上有https://www.bilibili.com/video/av24724071
-- **伯克利的 CS294**， 因为有多个版本， 我把找到的一些链接放着， 看的时候建议直接看最新版：
+- **伯克利的 CS294(现在改叫 CS285 了？)**， 因为有多个版本， 我把找到的一些链接放着， 看的时候建议直接看最新版：
   - http://rail.eecs.berkeley.edu/deeprlcourse/
   - [CS294 深度增强学习 这门课的质量是不是不大好？](https://www.zhihu.com/question/61171437)
   - [CS 294: Deep Reinforcement Learning Note（1）](https://zhuanlan.zhihu.com/p/29080505)， 这个应该是以前的版本吧

@@ -1,10 +1,9 @@
 import React from 'react';
 
-import GatsbyLink from "gatsby-link"
+import GatsbyLink from 'gatsby-link';
 import styled from 'styled-components';
 
-const MobileNav = styled.nav`
-`
+const MobileNav = styled.nav``;
 const Overlay = styled.div`
   height: 110px;
   position: absolute;
@@ -12,7 +11,7 @@ const Overlay = styled.div`
   width: 100%;
   z-index: 2;
   background: #4d4d4d;
-`
+`;
 const MenuBtn = styled.div`
   position: absolute;
   width: 50px;
@@ -25,37 +24,37 @@ const MenuBtn = styled.div`
     color: white;
   }
   bottom: 0;
-`
+`;
 const SelfIntro = styled.div`
   text-align: center;
   padding: 10px 0 0;
-`
+`;
 const Avatar = styled.img`
-    border: 5px solid #fff;
-    border-radius: 300px;
-    width: 128px;
-    height: 128px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 100;
-`
+  border: 5px solid #fff;
+  border-radius: 300px;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 100;
+`;
 const Author = styled.h1`
-    margin: 0;
-    font-family: Roboto,serif;
-    font-size: 30px;
-    color: #424242;
-`
+  margin: 0;
+  font-family: Roboto, serif;
+  font-size: 30px;
+  color: #424242;
+`;
 const Tags = styled.p`
-    color: #999;
-    font-size: 14px;
-    line-height: 25px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    i {
-      margin: 0 10px;
-      color: #d0d0d0;
-    }
-`
+  color: #999;
+  font-size: 14px;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  i {
+    margin: 0 10px;
+    color: #d0d0d0;
+  }
+`;
 const Menu = styled.nav`
   height: auto;
   padding: 10px 0 20px;
@@ -80,7 +79,7 @@ const Menu = styled.nav`
     border-left: 0;
   }
   li:last-child {
-    border-right: 0; 
+    border-right: 0;
   }
   li a {
     font-size: 14px;
@@ -94,19 +93,19 @@ const Menu = styled.nav`
     color: #eaeaea;
     background: #a0a0a0;
   }
-`
+`;
 const Social = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: center;
-`
+`;
 const ColorA = styled.a`
   color: #696969;
   cursor: pointer;
-`
-const Link = styled(GatsbyLink) `
+`;
+const Link = styled(GatsbyLink)`
   color: #696969;
-`
+`;
 const SocialLink = ColorA.extend`
   border-radius: 50%;
   display: -moz-inline-stack;
@@ -114,26 +113,26 @@ const SocialLink = ColorA.extend`
   vertical-align: middle;
   zoom: 1;
   margin: 0 8px 15px;
-  transition: .3s;
+  transition: 0.3s;
   text-align: center;
   color: #fff;
-  opacity: .7;
+  opacity: 0.7;
   width: 28px;
   height: 28px;
   line-height: 26px;
-`
+`;
 const GithubLink = SocialLink.extend`
   background: #afb6ca;
   border: 1px solid #afb6ca;
-`
+`;
 const WeiboLink = SocialLink.extend`
   background: #aaf;
   border: 1px solid #aaf;
-`
+`;
 const TwitterLink = SocialLink.extend`
-  background: #1DA1F2;
-  border: 1px solid #1DA1F2;
-`
+  background: #1da1f2;
+  border: 1px solid #1da1f2;
+`;
 const WXLink = SocialLink.extend`
   background: green;
   border: 1px solid green;
@@ -142,7 +141,7 @@ const WXLink = SocialLink.extend`
   }
   :hover {
     img {
-      position:absolute;
+      position: absolute;
       left: 40px;
       bottom: 20px;
       display: block;
@@ -150,38 +149,68 @@ const WXLink = SocialLink.extend`
       height: 215px;
     }
   }
-`
+`;
 export default ({ showMiddle }) => {
-  return <MobileNav>
-    <Overlay />
-    <MenuBtn onClick={() => showMiddle('all')}><i className="iconfont icon-menu" /></MenuBtn>
-    <SelfIntro>
-      <Link to="/">
-        <Avatar src="https://static.oschina.net/uploads/user/53/106378_100.jpg" />
-        {/* <Avatar src="http://tva2.sinaimg.cn/crop.0.0.180.180.180/64256cb5jw1e8qgp5bmzyj2050050aa8.jpg" />  */}
-      </Link>
-      <Author>
-        <Link to="/">magicly </Link>
-      </Author>
-      <Tags>
-        <i className="iconfont icon-quoteleft" />
-        Programmer, Geek, Magic, Poker, ML
-        <i className="iconfont icon-quoteright" />
-      </Tags>
-    </SelfIntro>
-    <Social>
-      <GithubLink className="iconfont icon-github" href="https://github.com/magicly" title="Github" target="_blank"></GithubLink>
-      <WeiboLink className="iconfont icon-weibo" href="https://weibo.com/magicly" title="Weibo" target="_blank"></WeiboLink>
-      <TwitterLink className="iconfont icon-twitter" href="https://twitter.com/magicly007" title="Twitter" target="_blank"></TwitterLink>
-      <WXLink className="iconfont icon-weixin" href="https://mp.weixin.qq.com/s?__biz=MzI2NzQ0NjQ2Ng==&mid=2247483661&idx=1&sn=e75ed1772653a445b7751e4a84dd8f51&chksm=eafff0a0dd8879b6708cb1e152f74bd327d1c92f53f61ab992dea5dfe74c7e3fe8b2162bb591&mpshare=1&scene=1&srcid=0924ruejjAea8tOrkIE1hXkr#rd" title="Twitter" target="_blank">
-        <img src="https://static.magicfun.ai/qrcode/jsforfun.jpg" />
-      </WXLink>
-    </Social>
-    <Menu>
-      <ul>
-        <li><Link to="/" className="active">主页</Link></li>
-        <li><Link to="/archives">归档</Link></li>
-      </ul>
-    </Menu>
-  </MobileNav>
-}
+  return (
+    <MobileNav>
+      <Overlay />
+      <MenuBtn onClick={() => showMiddle('all')}>
+        <i className="iconfont icon-menu" />
+      </MenuBtn>
+      <SelfIntro>
+        <Link to="/">
+          <Avatar src="https://static.oschina.net/uploads/user/53/106378_100.jpg" />
+          {/* <Avatar src="http://tva2.sinaimg.cn/crop.0.0.180.180.180/64256cb5jw1e8qgp5bmzyj2050050aa8.jpg" />  */}
+        </Link>
+        <Author>
+          <Link to="/">magicly </Link>
+        </Author>
+        <Tags>
+          <i className="iconfont icon-quoteleft" />
+          Programmer, Geek, Magic, Poker, ML
+          <i className="iconfont icon-quoteright" />
+        </Tags>
+      </SelfIntro>
+      <Social>
+        <GithubLink
+          className="iconfont icon-github"
+          href="https://github.com/magicly"
+          title="Github"
+          target="_blank"
+        ></GithubLink>
+        <WeiboLink
+          className="iconfont icon-weibo"
+          href="https://weibo.com/magicly"
+          title="Weibo"
+          target="_blank"
+        ></WeiboLink>
+        <TwitterLink
+          className="iconfont icon-twitter"
+          href="https://twitter.com/magicly007"
+          title="Twitter"
+          target="_blank"
+        ></TwitterLink>
+        <WXLink
+          className="iconfont icon-weixin"
+          href="https://mp.weixin.qq.com/s?__biz=MzI2NzQ0NjQ2Ng==&mid=2247483661&idx=1&sn=e75ed1772653a445b7751e4a84dd8f51&chksm=eafff0a0dd8879b6708cb1e152f74bd327d1c92f53f61ab992dea5dfe74c7e3fe8b2162bb591&mpshare=1&scene=1&srcid=0924ruejjAea8tOrkIE1hXkr#rd"
+          title="Twitter"
+          target="_blank"
+        >
+          <img src={require('../qrcode.jpg')} />
+        </WXLink>
+      </Social>
+      <Menu>
+        <ul>
+          <li>
+            <Link to="/" className="active">
+              主页
+            </Link>
+          </li>
+          <li>
+            <Link to="/archives">归档</Link>
+          </li>
+        </ul>
+      </Menu>
+    </MobileNav>
+  );
+};
