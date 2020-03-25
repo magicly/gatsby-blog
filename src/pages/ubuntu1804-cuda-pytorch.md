@@ -3,7 +3,7 @@ title: Ubuntu18.04 pytorch cuda/cudnn
 draft: false
 tags: [pytorch, deep learning, cuda, cudnn]
 category: Blockchain
-date: '2018-08-14T07:41:32Z'
+date: '2020-02-21T07:41:32Z'
 ---
 
 <!-- more -->
