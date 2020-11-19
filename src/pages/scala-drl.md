@@ -39,6 +39,8 @@ https://github.com/astooke/rlpyt
 
 https://arxiv.org/abs/1909.01500
 
+https://bair.berkeley.edu/blog/2019/09/24/rlpyt/
+
 BAIR作品， 工程实现很好， 跑起来性能也很不错， 只支持单机， 其实大部分时候够用了， 实现了很多算法， 包括DQN/A2C/PPO/DDPG/SAC/TD3等。
 
 > Modular, optimized implementations of common deep RL algorithms in PyTorch, with unified infrastructure supporting all three major families of model-free algorithms: policy gradient, deep-q learning, and q-function policy gradient. Intended to be a high-throughput code-base for small- to medium-scale research (large-scale meaning like OpenAI Dota with 100's GPUs).
