@@ -1,21 +1,22 @@
 #!/usr/bin/python
 # coding=utf8
 
-from __future__ import print_function
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
+
+import json
+import os
 import platform
 import re
 import time
-import os
+
 import docker
-import json
 
 mirror_prefix = "--registry-mirror="
 version = ""
 
 mirrors = {
     "docker-cn": "https://registry.docker-cn.com",
-    "aliyun": "https://pcbvaq0t.mirror.aliyuncs.com"
+    "aliyun": "https://pcbvaq0t.mirror.aliyuncs.com",
     "tencent": "https://mirror.ccs.tencentyun.com",
     "netease": "http://hub-mirror.c.163.com",
     "qiniu": "https://reg-mirror.qiniu.com",
@@ -25,38 +26,22 @@ mirrors = {
 }
 
 docker_config_map = {
-    "Ubuntu": {
-        "config": "/etc/default/docker",
-        "prefix": "DOCKER_OPTS="
-    },
-    "CentOS Linux": {
-        "config": "/etc/sysconfig/docker",
-        "prefix": "OPTIONS="
-    },
-    "Deepin": {
-        "config": "/etc/default/docker",
-        "prefix": "DOCKER_OPTS="
-    }
+    "Ubuntu": {"config": "/etc/default/docker", "prefix": "DOCKER_OPTS="},
+    "CentOS Linux": {"config": "/etc/sysconfig/docker", "prefix": "OPTIONS="},
+    "Deepin": {"config": "/etc/default/docker", "prefix": "DOCKER_OPTS="},
 }
 
 docker_ce_config_map = {
-    "Ubuntu": {
-        "config": "/etc/docker/daemon.json",
-    },
-    "Deepin": {
-        "config": "/etc/docker/daemon.json",
-    },
-    "Arch": {
-        "config": "/etc/docker/daemon.json",
-    },
-    "CentOS Linux": {
-        "config": "/etc/docker/daemon.json",
-    }
+    "Ubuntu": {"config": "/etc/docker/daemon.json",},
+    "Deepin": {"config": "/etc/docker/daemon.json",},
+    "Arch": {"config": "/etc/docker/daemon.json",},
+    "CentOS Linux": {"config": "/etc/docker/daemon.json",},
 }
 
 
 def get_dist():
-    return platform.linux_distribution()[0]
+    # return platform.linux_distribution()[0]
+    return "Ubuntu"
 
 
 def get_config(dist):
@@ -75,10 +60,10 @@ def get_new_options(option, mirror):
     option = option.strip()
     quota = option[len(option) - 1]
     if mirror_prefix in option:
-        r1 = re.compile('[\'\"]')
+        r1 = re.compile("['\"]")
         results1 = r1.split(option)
 
-        r2 = re.compile('[\s]')
+        r2 = re.compile("[\s]")
         results2 = r2.split(results1[1].strip())
         for i in range(len(results2)):
             if results2[i].startswith(mirror_prefix):
@@ -108,7 +93,7 @@ def set_docker_config(mirror):
             else:
                 new_line += line
         if options == "":
-            options = prefix + "\'" + mirror_prefix + mirror + "\'"
+            options = prefix + "'" + mirror_prefix + mirror + "'"
 
     with open(docker_config, "w") as f:
         f.write(new_line)
@@ -126,7 +111,7 @@ def set_docker_config_ce(mirror):
         with open(docker_config, "r") as f:
             config_dict = json.load(f)
 
-    config_dict[u'registry-mirrors'] = [mirror]
+    config_dict["registry-mirrors"] = [mirror]
 
     with open(docker_config, "w") as f:
         json.dump(config_dict, f)
@@ -154,8 +139,11 @@ def get_speed(mirror, mirror_url):
     end_time = time.time()
 
     cost_time = end_time - begin_time
-    print("mirror {mirror} cost time: {cost_time}\n".format(
-        mirror=mirror, cost_time=cost_time))
+    print(
+        "mirror {mirror} cost time: {cost_time}\n".format(
+            mirror=mirror, cost_time=cost_time
+        )
+    )
 
     # delete centos images every time.
     execute_sys_cmd("docker rmi registry:2 -f 1> /dev/null 2>&1")
@@ -173,7 +161,7 @@ if __name__ == "__main__":
     best_mirror_url = ""
 
     client = docker.from_env()
-    version = client.version()[u'Version']
+    version = client.version()["Version"]
 
     for k, v in mirrors.items():
         cost_time = get_speed(k, v)
@@ -191,8 +179,11 @@ if __name__ == "__main__":
             total_time = 0
             time.sleep(60 - total_time)
 
-    print("best mirror is: {mirror}, set docker config and restart docker daemon now.".format(
-        mirror=best_mirror))
+    print(
+        "best mirror is: {mirror}, set docker config and restart docker daemon now.".format(
+            mirror=best_mirror
+        )
+    )
     if "ce" in version:
         set_docker_config_ce(best_mirror_url)
     else:
